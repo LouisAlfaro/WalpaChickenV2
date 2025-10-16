@@ -3,6 +3,266 @@
 @section('title', 'Oportunidades - Walpa Chicken')
 
 @section('content')
+<style>
+/* PÁGINA COMPLETA */
+.opportunities-page {
+    background: #fec601 !important;
+    min-height: 100vh;
+}
+
+/* HERO SECTION */
+.hero-opportunities {
+    background: #210303 !important;
+}
+.hero-title {
+    color: white !important;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.5) !important;
+}
+.hero-subtitle {
+    color: white !important;
+    opacity: 1 !important;
+}
+.text-gradient {
+    color: #fec601 !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3) !important;
+}
+.hero-badge {
+    background: #fec601 !important;
+    color: #210303 !important;
+}
+.btn-primary-walpa {
+    background: #d03336 !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 700 !important;
+    padding: 15px 35px !important;
+    border-radius: 30px !important;
+    box-shadow: 0 6px 20px rgba(208,51,54,0.4) !important;
+}
+.btn-primary-walpa:hover {
+    background: #b02a2d !important;
+    color: white !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 30px rgba(208,51,54,0.5) !important;
+}
+.btn-outline-light {
+    border: 3px solid white !important;
+    color: white !important;
+    background: transparent !important;
+    font-weight: 700 !important;
+    padding: 12px 35px !important;
+    border-radius: 30px !important;
+}
+.btn-outline-light:hover {
+    background: white !important;
+    color: #210303 !important;
+}
+
+/* SECCIÓN OPORTUNIDADES */
+.opportunities-section {
+    background: #fec601 !important;
+    padding: 80px 0 !important;
+}
+
+/* HEADER DE SECCIÓN - CAJA LIMPIA */
+.section-header {
+    background: #210303 !important;
+    padding: 3rem 2rem !important;
+    border-radius: 20px !important;
+    margin-bottom: 3rem !important;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3) !important;
+    border: none !important;
+}
+
+/* BADGE */
+.section-badge {
+    background: #fec601 !important;
+    color: #210303 !important;
+    font-size: 1rem !important;
+    padding: 10px 30px !important;
+    font-weight: 800 !important;
+    border-radius: 25px !important;
+    box-shadow: 0 4px 15px rgba(254,198,1,0.4) !important;
+    display: inline-block !important;
+    margin-bottom: 20px !important;
+}
+
+/* TÍTULOS */
+.section-title {
+    color: white !important;
+    font-size: 3rem !important;
+    font-weight: 900 !important;
+    margin: 20px 0 15px 0 !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3) !important;
+}
+
+.section-subtitle {
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 1.2rem !important;
+    opacity: 0.95 !important;
+}
+
+/* TARJETAS DE OPORTUNIDADES - FONDO BLANCO */
+.opportunity-card {
+    background: white !important;
+    border: 4px solid #210303 !important;
+    box-shadow: 0 8px 25px rgba(33,3,3,0.2) !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+}
+
+.opportunity-card:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 15px 40px rgba(33,3,3,0.3) !important;
+}
+
+.card-header-icon {
+    background: white !important;
+    padding: 30px 20px 20px !important;
+    text-align: center !important;
+    border-bottom: 3px solid #fec601 !important;
+}
+
+.card-icon {
+    width: 80px !important;
+    height: 80px !important;
+    margin: 0 auto 15px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+}
+
+.commercial-icon {
+    background: #1ca0bf !important;
+}
+
+.provider-icon {
+    background: #e83e8c !important;
+}
+
+.job-icon {
+    background: #495057 !important;
+}
+
+.card-icon i {
+    color: white !important;
+    font-size: 2rem !important;
+}
+
+.card-badge {
+    color: #210303 !important;
+    font-weight: 800 !important;
+    font-size: 1.1rem !important;
+    background: transparent !important;
+    text-transform: uppercase !important;
+    display: block !important;
+    margin-top: 10px !important;
+}
+
+.card-title {
+    color: #210303 !important;
+    font-weight: 800 !important;
+    font-size: 1.8rem !important;
+}
+
+.card-description {
+    color: #333 !important;
+    font-weight: 500 !important;
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+}
+
+.card-body {
+    background: white !important;
+    padding: 2rem !important;
+}
+
+.feature-item {
+    color: #210303 !important;
+    font-weight: 600 !important;
+}
+
+.feature-item i {
+    color: #d03336 !important;
+}
+
+/* BOTONES */
+.btn-commercial,
+.btn-provider,
+.btn-job {
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    text-transform: uppercase !important;
+}
+
+/* SECCIÓN BENEFICIOS - FONDO MARRÓN */
+.benefits-section {
+    background: #210303 !important;
+    position: relative;
+    padding: 80px 0 !important;
+}
+
+.benefits-section .section-title {
+    color: #fec601 !important;
+    font-size: 3.5rem !important;
+    font-weight: 900 !important;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.5) !important;
+    margin-bottom: 20px !important;
+}
+
+.benefits-section .section-subtitle {
+    color: white !important;
+    font-size: 1.4rem !important;
+    font-weight: 600 !important;
+    opacity: 1 !important;
+}
+
+/* CARDS DE BENEFICIOS */
+.benefit-card {
+    background: white !important;
+    border: 3px solid #fec601 !important;
+    padding: 2rem !important;
+    border-radius: 20px !important;
+}
+
+.benefit-card:hover {
+    background: white !important;
+    border-color: #fec601 !important;
+    transform: translateY(-5px) !important;
+    box-shadow: 0 10px 30px rgba(254,198,1,0.4) !important;
+}
+
+.benefit-card h4 {
+    color: #210303 !important;
+    font-weight: 800 !important;
+    font-size: 1.5rem !important;
+    margin-bottom: 15px !important;
+}
+
+.benefit-card p {
+    color: #333 !important;
+    font-weight: 500 !important;
+    font-size: 1rem !important;
+}
+
+.benefit-icon {
+    background: #fec601 !important;
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto 20px !important;
+}
+
+.benefit-icon i {
+    color: #210303 !important;
+    font-size: 2rem !important;
+}
+</style>
 <div class="opportunities-page">
     <!-- Hero Section -->
     <section class="hero-opportunities">
@@ -396,11 +656,13 @@
    Variables CSS
 ========================= */
 :root {
-    --walpa-primary: #D4AF37;
-    --walpa-dark: #1a0b0a;
-    --commercial-color: #20c997;
-    --provider-color: #fd7e14;
-    --job-color: #6f42c1;
+    --walpa-primary: #fec601;
+    --walpa-yellow: #fec601;
+    --walpa-dark: #210303;
+    --walpa-brown: #210303;
+    --commercial-color: #1ca0bf;
+    --provider-color: #e83e8c;
+    --job-color: #495057;
     --text-dark: #2c3e50;
     --text-muted: #6c757d;
     --border-light: #dee2e6;
@@ -413,7 +675,7 @@
    Reset y Base
 ========================= */
 .opportunities-page {
-    background: var(--bg-light);
+    background: #fec601 !important;
     font-family: 'Inter', sans-serif;
 }
 
@@ -425,7 +687,7 @@
    HERO SECTION
 ========================= */
 .hero-opportunities {
-    background: linear-gradient(135deg, var(--walpa-dark) 0%, #8B4513 100%);
+    background: #210303 !important;
     color: white;
     padding: 100px 0 80px;
     position: relative;
@@ -438,7 +700,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 70%, rgba(212,175,55,0.2) 0%, transparent 70%);
+    background: transparent;
 }
 
 .min-vh-80 {
@@ -449,14 +711,14 @@
 
 .hero-badge {
     display: inline-block;
-    background: var(--walpa-primary);
-    color: var(--walpa-dark);
+    background: #fec601;
+    color: #210303;
     padding: 12px 25px;
     border-radius: 25px;
     font-size: 14px;
     font-weight: 700;
     margin-bottom: 20px;
-    box-shadow: 0 4px 15px rgba(212,175,55,0.4);
+    box-shadow: 0 4px 15px rgba(254,198,1,0.4);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -470,9 +732,7 @@
 }
 
 .text-gradient {
-    background: linear-gradient(45deg, var(--walpa-primary), #FFD700);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #fec601;
     background-clip: text;
 }
 
@@ -490,14 +750,14 @@
 }
 
 .btn-primary-walpa {
-    background: var(--walpa-primary);
+    background: #fec601;
     border: none;
-    color: var(--walpa-dark);
+    color: #210303;
     padding: 15px 35px;
     font-weight: 700;
     border-radius: 30px;
     transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(212,175,55,0.4);
+    box-shadow: 0 6px 20px rgba(254,198,1,0.4);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     text-decoration: none;
@@ -506,10 +766,10 @@
 }
 
 .btn-primary-walpa:hover {
-    background: #FFD700;
+    background: #f8d000;
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(212,175,55,0.5);
-    color: var(--walpa-dark);
+    box-shadow: 0 10px 30px rgba(254,198,1,0.5);
+    color: #210303;
     text-decoration: none;
 }
 
@@ -562,7 +822,7 @@
    SUCCESS ALERT
 ========================= */
 .success-alert {
-    background: linear-gradient(135deg, #28a745, #20c997);
+    background: #28a745;
     border: none;
     color: white;
     border-radius: 15px;
@@ -575,7 +835,7 @@
 ========================= */
 .opportunities-section {
     padding: 80px 0;
-    background: white;
+    background: #fec601 !important;
 }
 
 .section-header {
@@ -583,15 +843,15 @@
 }
 
 .section-badge {
-    background: var(--walpa-primary);
-    color: var(--walpa-dark);
+    background: #fec601;
+    color: #210303;
     padding: 12px 30px;
     border-radius: 25px;
     font-size: 15px;
     font-weight: 700;
     display: inline-block;
     margin-bottom: 20px;
-    box-shadow: 0 4px 15px rgba(212,175,55,0.3);
+    box-shadow: 0 4px 15px rgba(254,198,1,0.3);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -599,14 +859,14 @@
 .section-title {
     font-size: 2.8rem;
     font-weight: 800;
-    color: var(--text-dark);
+    color: #210303;
     margin-bottom: 15px;
     line-height: 1.2;
 }
 
 .section-subtitle {
     font-size: 1.1rem;
-    color: var(--text-muted);
+    color: #555;
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
@@ -661,7 +921,7 @@
 .card-header-icon {
     padding: 40px 25px 20px;
     text-align: center;
-    background: linear-gradient(135deg, var(--bg-light) 0%, #ffffff 100%);
+    background: white;
 }
 
 .card-icon {
@@ -679,15 +939,15 @@
 }
 
 .commercial-icon {
-    background: linear-gradient(135deg, var(--commercial-color) 0%, #17a2b8 100%);
+    background: #1ca0bf;
 }
 
 .provider-icon {
-    background: linear-gradient(135deg, var(--provider-color) 0%, #e83e8c 100%);
+    background: #e83e8c;
 }
 
 .job-icon {
-    background: linear-gradient(135deg, var(--job-color) 0%, #495057 100%);
+    background: #495057;
 }
 
 .card-badge {
@@ -775,7 +1035,7 @@
    BOTONES
 ========================= */
 .btn-commercial {
-    background: linear-gradient(135deg, var(--commercial-color) 0%, #17a2b8 100%);
+    background: #1ca0bf;
     border: none;
     color: white;
     padding: 15px 30px;
@@ -784,14 +1044,14 @@
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    box-shadow: 0 8px 25px rgba(32,201,151,0.4);
+    box-shadow: 0 8px 25px rgba(28,160,191,0.4);
     width: 100%;
     border: none;
     cursor: pointer;
 }
 
 .btn-provider {
-    background: linear-gradient(135deg, var(--provider-color) 0%, #e83e8c 100%);
+    background: #e83e8c;
     border: none;
     color: white;
     padding: 15px 30px;
@@ -800,14 +1060,14 @@
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    box-shadow: 0 8px 25px rgba(253,126,20,0.4);
+    box-shadow: 0 8px 25px rgba(232,62,140,0.4);
     width: 100%;
     border: none;
     cursor: pointer;
 }
 
 .btn-job {
-    background: linear-gradient(135deg, var(--job-color) 0%, #495057 100%);
+    background: #495057;
     border: none;
     color: white;
     padding: 15px 30px;
@@ -816,7 +1076,7 @@
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    box-shadow: 0 8px 25px rgba(111,66,193,0.4);
+    box-shadow: 0 8px 25px rgba(73,80,87,0.4);
     width: 100%;
     border: none;
     cursor: pointer;
@@ -850,7 +1110,7 @@
    BENEFITS SECTION
 ========================= */
 .benefits-section {
-    background: linear-gradient(135deg, var(--text-dark) 0%, #34495e 100%);
+    background: #210303 !important;
     color: white;
     padding: 80px 0;
 }
@@ -933,15 +1193,15 @@
 }
 
 .modal-header.bg-commercial {
-    background: linear-gradient(135deg, var(--commercial-color) 0%, #17a2b8 100%) !important;
+    background: #1ca0bf !important;
 }
 
 .modal-header.bg-provider {
-    background: linear-gradient(135deg, var(--provider-color) 0%, #e83e8c 100%) !important;
+    background: #e83e8c !important;
 }
 
 .modal-header.bg-job {
-    background: linear-gradient(135deg, var(--job-color) 0%, #495057 100%) !important;
+    background: #495057 !important;
 }
 
 .modal-title {

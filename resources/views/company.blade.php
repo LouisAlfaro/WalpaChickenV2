@@ -283,12 +283,12 @@
 <!-- CSS personalizado -->
 <style>
 .company-page {
-    background-color: #f8f9fa;
+    background-color: #fec601;
     min-height: 100vh;
 }
 
 .company-header {
-    background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+    background: #210303;
     color: white;
     margin-bottom: 0;
     position: relative;
@@ -301,40 +301,40 @@
     left: 0;
     right: 0;
     height: 50px;
-    background: linear-gradient(45deg, transparent 50%, #f8f9fa 50%);
+    background: transparent;
 }
 
 .text-walpa {
-    color: #D4AF37 !important;
+    color: #210303 !important;
 }
 
 .btn-walpa {
-    background-color: #D4AF37;
-    border-color: #D4AF37;
-    color: white;
+    background-color: #210303;
+    border-color: #210303;
+    color: #fec601;
     font-weight: 600;
     transition: all 0.3s ease;
 }
 
 .btn-walpa:hover {
-    background-color: #B8860B;
-    border-color: #B8860B;
-    color: white;
+    background-color: #2c1810;
+    border-color: #2c1810;
+    color: #fec601;
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 4px 15px rgba(33,3,3, 0.3);
 }
 
 .btn-outline-walpa {
-    border-color: #D4AF37;
-    color: #D4AF37;
+    border-color: #210303;
+    color: #210303;
     font-weight: 600;
     transition: all 0.3s ease;
 }
 
 .btn-outline-walpa:hover {
-    background-color: #D4AF37;
-    border-color: #D4AF37;
-    color: white;
+    background-color: #210303;
+    border-color: #210303;
+    color: #fec601;
     transform: translateY(-2px);
 }
 
@@ -344,7 +344,7 @@
     padding: 2rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease;
-    border-left: 4px solid #D4AF37;
+    border-left: 4px solid #210303;
 }
 
 .company-section:hover {
@@ -357,7 +357,7 @@
 }
 
 .section-badge {
-    background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+    background: #210303;
     color: white;
     padding: 0.25rem 0.75rem;
     border-radius: 15px;
@@ -391,7 +391,7 @@
     align-items: center;
     margin-bottom: 0.75rem;
     padding: 0.5rem;
-    background: rgba(212, 175, 55, 0.1);
+    background: rgba(33,3,3, 0.1);
     border-radius: 8px;
 }
 
@@ -408,7 +408,7 @@
     top: 0.5rem;
     width: 12px;
     height: 12px;
-    background: #D4AF37;
+    background: #210303;
     border-radius: 50%;
 }
 
@@ -419,7 +419,7 @@
     top: 12px;
     width: 2px;
     height: 20px;
-    background: #D4AF37;
+    background: #210303;
 }
 
 .timeline-item:last-child .timeline-marker::before {
@@ -432,14 +432,14 @@
     align-items: center;
     margin-bottom: 1rem;
     padding: 1rem;
-    background: #f8f9fa;
+    background: white;
     border-radius: 10px;
-    border-left: 3px solid #D4AF37;
+    border-left: 3px solid #210303;
 }
 
 .objective-number {
-    background: #D4AF37;
-    color: white;
+    background: #210303;
+    color: #fec601;
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -457,7 +457,7 @@
     align-items: center;
     margin-bottom: 0.75rem;
     padding: 0.5rem;
-    background: rgba(52, 152, 219, 0.1);
+    background: rgba(33,3,3, 0.1);
     border-radius: 8px;
 }
 
@@ -467,21 +467,32 @@
     align-items: center;
     margin-bottom: 0.75rem;
     padding: 0.5rem;
-    background: rgba(212, 175, 55, 0.1);
+    background: rgba(33,3,3, 0.1);
     border-radius: 8px;
 }
 
 /* Sección CTA */
 .cta-section {
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(184, 134, 11, 0.1) 100%);
+    background: white;
     border-radius: 15px;
-    border: 2px solid rgba(212, 175, 55, 0.2);
+    border: 3px solid #210303;
+    box-shadow: 0 10px 30px rgba(33,3,3,0.2);
+}
+
+.cta-section h3 {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    color: #555;
 }
 
 /* Sección especial para visión */
 .vision-section {
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(255, 255, 255, 1) 100%);
-    border-left-color: #3498db;
+    background: white;
+    border-left-color: #210303;
 }
 
 /* Responsive */

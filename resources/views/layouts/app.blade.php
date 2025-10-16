@@ -104,10 +104,13 @@ body {
     position: relative;
     overflow: hidden;
     margin: 0 !important;
+    background-color: #210303; /* Color de fondo durante transiciones */
 }
 
 .hero-slider .carousel-item {
     height: 70vh;
+    transition: transform 0.6s ease-in-out;
+    background-color: #210303; /* Prevenir flash blanco */
 }
 
 .slider-item {
@@ -116,6 +119,38 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
+    background-color: #210303; /* Prevenir flash blanco */
+}
+
+/* Prevenir flash blanco en el carrusel */
+.carousel-inner {
+    background-color: #210303 !important;
+}
+
+.carousel-item {
+    background-color: #210303 !important;
+}
+
+/* Transición suave sin flash blanco */
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+    display: block;
+}
+
+.carousel-item-next:not(.carousel-item-start),
+.carousel-item-prev:not(.carousel-item-end),
+.active.carousel-item-start,
+.active.carousel-item-end {
+    transform: translateX(0);
+}
+
+@supports (transform-style: preserve-3d) {
+    .carousel-item-next,
+    .carousel-item-prev {
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+    }
 }
 
 .slider-overlay {
@@ -306,71 +341,72 @@ body {
 
 .favorites-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 25px;
-    max-width: 1200px;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 30px;
+    max-width: 1400px;
     margin: 0 auto;
     position: relative;
     z-index: 5;
 }
 
-/* Imagen principal con efectos mejorados */
+/* Imagen principal con efectos mejorados - MÁS GRANDE */
 .favorite-main {
     position: relative;
-    border-radius: 25px;
+    border-radius: 30px;
     overflow: hidden;
     box-shadow: 
-        0 20px 40px rgba(0,0,0,0.15),
-        0 10px 20px rgba(0,0,0,0.1),
+        0 25px 50px rgba(0,0,0,0.18),
+        0 15px 30px rgba(0,0,0,0.12),
         inset 0 1px 0 rgba(255,255,255,0.2);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     background: linear-gradient(145deg, #ffffff, #f0f0f0);
-    border: 3px solid rgba(255,255,255,0.8);
+    border: 4px solid rgba(255,255,255,0.8);
 }
 
 .favorite-main:hover {
     transform: translateY(-15px) scale(1.02);
     box-shadow: 
-        0 30px 60px rgba(0,0,0,0.2),
-        0 15px 30px rgba(0,0,0,0.15),
+        0 35px 70px rgba(0,0,0,0.22),
+        0 20px 40px rgba(0,0,0,0.18),
         inset 0 1px 0 rgba(255,255,255,0.3);
 }
 
 .favorite-image-main {
     width: 100%;
-    height: 420px;
+    height: 600px;
     background-size: cover;
     background-position: center;
     position: relative;
-    border-radius: 22px;
+    border-radius: 26px;
 }
 
-/* Imágenes laterales mejoradas */
+/* Imágenes laterales en grid 2x2 - MÁS GRANDES */
 .favorite-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 25px;
 }
 
 .favorite-small {
     position: relative;
-    border-radius: 20px;
+    border-radius: 25px;
     overflow: hidden;
     box-shadow: 
-        0 15px 30px rgba(0,0,0,0.12),
-        0 8px 15px rgba(0,0,0,0.08),
+        0 18px 35px rgba(0,0,0,0.15),
+        0 10px 20px rgba(0,0,0,0.1),
         inset 0 1px 0 rgba(255,255,255,0.2);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    height: 195px;
+    height: 280px;
     background: linear-gradient(145deg, #ffffff, #f0f0f0);
-    border: 2px solid rgba(255,255,255,0.7);
+    border: 3px solid rgba(255,255,255,0.7);
 }
 
 .favorite-small:hover {
-    transform: translateY(-8px) scale(1.05);
+    transform: translateY(-10px) scale(1.05);
     box-shadow: 
-        0 20px 40px rgba(0,0,0,0.18),
-        0 12px 20px rgba(0,0,0,0.12),
+        0 25px 50px rgba(0,0,0,0.2),
+        0 15px 30px rgba(0,0,0,0.15),
         inset 0 1px 0 rgba(255,255,255,0.3);
 }
 
@@ -380,7 +416,7 @@ body {
     background-size: cover;
     background-position: center;
     position: relative;
-    border-radius: 18px;
+    border-radius: 22px;
 }
 
 /* Overlay mejorado con gradiente más suave */
@@ -481,7 +517,7 @@ body {
     transform: translateY(-2px) scale(1.02);
 }
 
-/* Responsive mejorado */
+/* Responsive mejorado para 5 favoritos */
 @media (max-width: 992px) {
     .favorites-section {
         padding: 60px 0;
@@ -489,6 +525,19 @@ body {
     
     .section-title-favorites {
         font-size: 3rem;
+    }
+
+    .favorites-grid {
+        grid-template-columns: 1.2fr 1fr;
+        gap: 25px;
+    }
+
+    .favorite-image-main {
+        height: 500px;
+    }
+
+    .favorite-small {
+        height: 240px;
     }
 }
 
@@ -504,16 +553,16 @@ body {
     }
 
     .favorite-image-main {
-        height: 320px;
+        height: 380px;
     }
 
     .favorite-small {
-        height: 220px;
+        height: 200px;
     }
 
     .favorite-sidebar {
         grid-template-columns: 1fr 1fr;
-        display: grid;
+        grid-template-rows: auto auto;
         gap: 15px;
     }
     
@@ -531,9 +580,18 @@ body {
     .section-title-favorites {
         font-size: 2.2rem;
     }
+
+    .favorite-image-main {
+        height: 320px;
+    }
+
+    .favorite-small {
+        height: 180px;
+    }
     
     .favorite-sidebar {
         grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, auto);
     }
     
     .btn-promociones {
@@ -734,8 +792,10 @@ body {
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     transition: transform 0.3s ease;
     position: relative;
-    height: 800px;
-    margin-bottom: 2rem; /* Solo margen inferior para separar tarjetas */
+    display: flex;
+    flex-direction: column;
+    height: 500px; /* 🔹 más cuadrado */
+    margin-bottom: 2rem;
 }
 
 .social-post-card:hover {
@@ -782,9 +842,11 @@ body {
 }
 
 .social-post-media {
+    flex: 1; /* ✅ ocupa todo el espacio disponible */
     position: relative;
-    height: 720px;
+    overflow: hidden;
 }
+
 
 .social-image {
     width: 100%;
@@ -793,17 +855,12 @@ body {
     background-position: center;
 }
 
+.social-post-media iframe,
 .social-post-media video {
     width: 100%;
-    height: 720px;
-    object-fit: cover;
-    border-radius: 0;
-}
-
-.social-post-media iframe {
-    border-radius: 0;
-    width: 100%;
-    height: 720px;
+    height: 100%;
+    object-fit: contain; /* 🔹 muestra todo el contenido sin recortar */
+    border: none;
 }
 
 .video-placeholder {
@@ -834,12 +891,13 @@ body {
 .overlay-bottom { bottom: 25px; }
 
 .social-post-footer {
-    padding: 1rem;
+    padding: 0.8rem 1rem;
     text-align: center;
-    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: auto; /* ✅ se adapta */
+    min-height: 60px; /* opcional si quieres un mínimo */
 }
 
 .social-button {
@@ -890,7 +948,7 @@ body {
 }
 
 .locations-section {
-    background: linear-gradient(135deg, #2c1810 0%, #1a0f0a 50%, #0d0705 100%);
+    background: #1a0b0a;
     padding: 80px 0;
     position: relative;
     overflow: hidden;
@@ -934,11 +992,11 @@ body {
     font-style: italic;
 }
 
-/* CONTENEDOR */
+/* CONTENEDOR - MÁS GRANDE */
 .locations-carousel-container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 80px;
+    padding: 0 100px;
     overflow: hidden;
 }
 .locations-carousel-container::after {
@@ -947,10 +1005,10 @@ body {
     top: 0; left: 0; right: 0; bottom: 0;
     pointer-events: none;
     background: linear-gradient(to right,
-        rgba(44,24,16,1) 0px,
-        rgba(44,24,16,0) 120px,
-        rgba(44,24,16,0) calc(100% - 120px),
-        rgba(44,24,16,1) 100%
+        #1a0b0a 0px,
+        rgba(26,11,10,0) 140px,
+        rgba(26,11,10,0) calc(100% - 140px),
+        #1a0b0a 100%
     );
     z-index: 10;
 }
@@ -987,59 +1045,61 @@ body {
     text-align: center;
 }
 
-/* IMAGEN */
+/* IMAGEN - MÁS GRANDE */
 .location-image {
     width: 100%;
-    height: 480px;
-    border-radius: 20px;
+    height: 650px;
+    border-radius: 30px;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
 }
 .location-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 30px;
     transition: transform 0.4s ease;
 }
 .location-card:hover .location-image img {
     transform: scale(1.05);
 }
 
-/* INFO */
+/* INFO - MÁS GRANDE */
 .location-info {
     padding: 0;
     background: transparent !important; /* 🔥 Nada de recuadro */
 }
 .location-name {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     font-weight: 900;
     color: #fec601;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
 }
 .location-address {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #fff;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-/* BOTONES */
+/* BOTONES - MÁS GRANDES */
 .location-actions {
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 30px;
 }
 .location-btn {
-    width: 55px;
-    height: 55px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: #fff;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
 }
 .whatsapp-btn {
@@ -1050,26 +1110,33 @@ body {
 }
 .location-btn:hover {
     transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.4);
 }
 
-/* CONTROLES */
+/* CONTROLES - MÁS GRANDES */
 .locations-control-prev,
 .locations-control-next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 45px;
-    height: 45px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     background: linear-gradient(135deg, #fec601, #e6b800);
     border: none;
     color: #2c1810;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: bold;
-    box-shadow: 0 6px 20px rgba(254,198,1,0.3);
+    box-shadow: 0 8px 25px rgba(254,198,1,0.4);
+    transition: all 0.3s ease;
 }
-.locations-control-prev { left: 15px; }
-.locations-control-next { right: 15px; }
+.locations-control-prev:hover,
+.locations-control-next:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 12px 35px rgba(254,198,1,0.5);
+}
+.locations-control-prev { left: 20px; }
+.locations-control-next { right: 20px; }
 
 /* INDICADORES */
 .locations-indicators {
@@ -1111,17 +1178,75 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 992px) {
-    .location-image { height: 360px; }
+    .locations-carousel-container {
+        max-width: 900px;
+        padding: 0 80px;
+    }
+    .location-image { 
+        height: 500px; 
+    }
+    .location-name { 
+        font-size: 2rem; 
+    }
+    .location-address { 
+        font-size: 1.3rem; 
+    }
 }
 @media (max-width: 768px) {
-    .locations-carousel-container { max-width: 500px; padding: 0 40px; }
-    .location-image { height: 300px; }
-    .location-name { font-size: 1.5rem; }
+    .locations-carousel-container { 
+        max-width: 600px; 
+        padding: 0 60px; 
+    }
+    .location-image { 
+        height: 400px;
+        border-radius: 25px;
+    }
+    .location-name { 
+        font-size: 1.8rem; 
+    }
+    .location-address { 
+        font-size: 1.2rem; 
+    }
+    .location-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+    }
+    .locations-control-prev,
+    .locations-control-next {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
 }
 @media (max-width: 576px) {
-    .locations-carousel-container { max-width: 400px; padding: 0 20px; }
-    .location-image { height: 250px; }
-    .locations-control-prev, .locations-control-next { display: none; }
+    .locations-carousel-container { 
+        max-width: 450px; 
+        padding: 0 30px; 
+    }
+    .location-image { 
+        height: 320px;
+        border-radius: 20px;
+    }
+    .location-name { 
+        font-size: 1.6rem; 
+    }
+    .location-address { 
+        font-size: 1.1rem; 
+    }
+    .location-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 1.4rem;
+    }
+    .locations-control-prev, 
+    .locations-control-next { 
+        display: none; 
+    }
+    .btn-all-locations {
+        font-size: 1.1rem;
+        padding: 15px 35px;
+    }
 }
 .social-widget-floating {
     position: fixed;
@@ -1276,6 +1401,8 @@ body {
         background: rgba(255,255,255,0.95) !important;
     }
 }
+
+
 }
     </style>
     @yield('styles')
@@ -1334,10 +1461,17 @@ body {
                             MI UBICACIÓN
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Lima Centro</a></li>
-                            <li><a class="dropdown-item" href="#">San Juan de Lurigancho</a></li>
-                            <li><a class="dropdown-item" href="#">Cusco</a></li>
+                            @forelse($locations as $location)
+                                <li>
+                                    <a class="dropdown-item" href="{{ $location->maps_url ?? '#' }}">
+                                        {{ $location->name }}
+                                    </a>
+                                </li>
+                            @empty
+                                <li><span class="dropdown-item text-muted">No hay locales registrados</span></li>
+                            @endforelse
                         </ul>
+
                     </div>
                 </div>
             </div>
@@ -1397,7 +1531,6 @@ body {
     </div>
 </footer>
     @php $socialWidget = \App\Models\SocialWidget::getActive(); @endphp
-    // style="background-color: {{ $socialWidget->background_color }};" se pone al costado de div class social icons si es que se quiere usar
     @if($socialWidget)
         <div class="social-widget-floating social-widget-{{ $socialWidget->position }}">
             <div class="social-icons-vertical">

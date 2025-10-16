@@ -204,9 +204,9 @@
                 </div>
             </div>
 
-            <!-- Imágenes laterales -->
+            <!-- Imágenes laterales (ahora 4 en lugar de 2) -->
             <div class="favorite-sidebar">
-                @foreach($favorites->skip(1)->take(2) as $favorite)
+                @foreach($favorites->skip(1)->take(4) as $favorite)
                     <div class="favorite-small">
                         <div class="favorite-image-small" style="background-image: url('{{ $favorite->image_url }}');">
                             <div class="favorite-overlay">
@@ -217,8 +217,8 @@
                     </div>
                 @endforeach
                 
-                @if($favorites->count() < 3)
-                    @for($i = $favorites->count(); $i < 3; $i++)
+                @if($favorites->count() < 5)
+                    @for($i = $favorites->count(); $i < 5; $i++)
                         <div class="favorite-small">
                             <div class="favorite-image-small" style="background-image: url('{{ asset('images/default-favorite.jpg') }}');">
                                 <div class="favorite-overlay">
@@ -477,10 +477,43 @@ iframe[src*="instagram"]:hover {
 
 @section('scripts')
 <script>
-// Auto-play del carousel
-var carousel = new bootstrap.Carousel(document.querySelector('#heroCarousel'), {
-    interval: 5000,
-    wrap: true
+// Auto-play del carousel con transición mejorada
+document.addEventListener('DOMContentLoaded', function() {
+    var heroCarousel = document.querySelector('#heroCarousel');
+    if (heroCarousel) {
+        var carousel = new bootstrap.Carousel(heroCarousel, {
+            interval: 5000,
+            wrap: true,
+            pause: false,
+            touch: true
+        });
+
+        // Prevenir flash blanco durante transiciones
+        heroCarousel.addEventListener('slide.bs.carousel', function (e) {
+            var items = heroCarousel.querySelectorAll('.carousel-item');
+            items.forEach(function(item) {
+                item.style.backgroundColor = '#210303';
+            });
+        });
+    }
+
+    var locationsCarousel = document.querySelector('#locationsCarousel');
+    if (locationsCarousel) {
+        new bootstrap.Carousel(locationsCarousel, {
+            interval: 4000,
+            wrap: true,
+            pause: 'hover',
+            touch: true
+        });
+
+        // Prevenir flash blanco en el carrusel de locales
+        locationsCarousel.addEventListener('slide.bs.carousel', function (e) {
+            var items = locationsCarousel.querySelectorAll('.carousel-item');
+            items.forEach(function(item) {
+                item.style.backgroundColor = '#1a0b0a';
+            });
+        });
+    }
 });
 </script>
 @endsection

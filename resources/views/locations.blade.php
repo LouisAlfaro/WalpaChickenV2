@@ -94,7 +94,7 @@
 <style>
 /* Página de locales - Diseño moderno */
 .locations-page {
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f1f3f4 100%);
+    background: linear-gradient(135deg, #fec601 0%, #f8d000 50%, #e6c200 100%);
     min-height: 100vh;
     padding: 40px 0 80px;
     position: relative;
@@ -108,8 +108,8 @@
     right: 0;
     bottom: 0;
     background: 
-        radial-gradient(circle at 20% 20%, rgba(254,198,1,0.03) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(208,51,54,0.03) 0%, transparent 50%);
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.08) 0%, transparent 50%);
     pointer-events: none;
 }
 
@@ -130,11 +130,12 @@
 .page-title {
     font-size: 2.8rem;
     font-weight: 900;
-    color: #2c1810;
+    color: #210303;
     margin: 0;
     position: relative;
     display: inline-block;
     padding-left: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
 .page-title::before {
@@ -144,7 +145,7 @@
     top: 0;
     bottom: 0;
     width: 5px;
-    background: linear-gradient(135deg, #fec601, #e6b800);
+    background: linear-gradient(135deg, #210303, #2c1810);
     border-radius: 3px;
 }
 
@@ -175,17 +176,19 @@
     box-shadow: 
         0 20px 60px rgba(0,0,0,0.12),
         0 8px 16px rgba(0,0,0,0.08);
+    border-color: #210303;
 }
 
 /* Imagen del local - MEJORADA PARA MOSTRAR COMPLETA */
 .location-image {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    background: white;
     min-height: 380px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-right: 3px solid #fec601;
 }
 
 .location-image img {
@@ -213,7 +216,7 @@
         rgba(254,198,1,0.1) 0%,
         transparent 40%,
         transparent 60%,
-        rgba(44,24,16,0.1) 100%
+        rgba(33,3,3,0.1) 100%
     );
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -240,7 +243,7 @@
     left: 0;
     width: 4px;
     height: 60px;
-    background: linear-gradient(135deg, #fec601, #e6b800);
+    background: linear-gradient(135deg, #210303, #2c1810);
     border-radius: 0 2px 2px 0;
 }
 
@@ -252,8 +255,8 @@
 
 .location-badge {
     display: inline-block;
-    background: linear-gradient(135deg, #fec601, #f4d03f);
-    color: #2c1810;
+    background: linear-gradient(135deg, #fec601, #f8d000);
+    color: #210303;
     padding: 6px 16px;
     border-radius: 20px;
     font-size: 0.85rem;
@@ -261,17 +264,18 @@
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 12px;
-    box-shadow: 0 2px 8px rgba(254,198,1,0.3);
+    box-shadow: 0 4px 15px rgba(254,198,1,0.4);
 }
 
 .location-name {
     font-size: 2.2rem;
     font-weight: 900;
-    color: #2c1810;
+    color: #210303;
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 1px;
     line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
 }
 
 /* Detalles del local */
@@ -288,7 +292,7 @@
     display: block;
     font-size: 1rem;
     font-weight: 700;
-    color: #2c1810;
+    color: #210303;
     margin-bottom: 6px;
     text-transform: uppercase;
     letter-spacing: 0.5px;

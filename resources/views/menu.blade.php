@@ -92,12 +92,12 @@
 <!-- CSS personalizado -->
 <style>
 .menu-page {
-    background-color: #f8f9fa;
+    background-color: #fec601;
     min-height: 100vh;
 }
 
 .menu-header {
-    background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+    background: #210303;
     color: white;
     margin-bottom: 2rem;
 }
@@ -106,46 +106,64 @@
      color: white;
 }
 
-.btn-walpa {
-    background-color: #D4AF37;
-    border-color: #D4AF37;
-    color: white;
-    font-weight: 600;
-    transition: all 0.3s ease;
+/* FORZAR BOTONES ROJOS SÓLIDOS SIN DEGRADADOS */
+.location-filters .btn,
+.location-filters .btn:active,
+.location-filters .btn:focus,
+.location-filters .btn:hover,
+.location-filters .btn.active,
+.btn-walpa,
+.btn-walpa:active,
+.btn-walpa:focus,
+.btn-walpa.active,
+.btn-outline-walpa,
+.btn-outline-walpa:active,
+.btn-outline-walpa:focus,
+.btn-outline-walpa.active {
+    background: #d03336 !important;
+    background-color: #d03336 !important;
+    background-image: none !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 700 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: none !important;
+    filter: none !important;
+    text-shadow: none !important;
 }
 
+.location-filters .btn:hover,
 .btn-walpa:hover {
-    background-color: #B8860B;
-    border-color: #B8860B;
-    color: white;
+    background: #b02a2d !important;
+    background-color: #b02a2d !important;
+    background-image: none !important;
+    color: white !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 4px 8px rgba(208,51,54, 0.3) !important;
+    filter: none !important;
 }
 
 .btn-outline-walpa {
-    border-color: #D4AF37;
-    color: #D4AF37;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    opacity: 0.85;
 }
 
-.btn-outline-walpa:hover,
-.btn-outline-walpa.active {
-    background-color: #D4AF37;
-    border-color: #D4AF37;
-    color: white;
+.btn-outline-walpa:hover {
+    opacity: 1;
+    transform: translateY(-2px);
 }
 
 .product-card {
-    border: none;
+    border: 2px solid #210303 !important;
     border-radius: 15px;
     overflow: hidden;
     transition: all 0.3s ease;
+    background: white;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 25px rgba(33, 3, 3, 0.2) !important;
+    border-color: #d03336 !important;
 }
 
 .product-image-container {
@@ -176,8 +194,8 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: rgba(212, 175, 55, 0.9);
-    color: white;
+    background-color: #210303;
+    color: #fec601;
     padding: 5px 10px;
     border-radius: 15px;
     font-size: 0.8rem;
@@ -185,7 +203,7 @@
 }
 
 .price {
-    color: #D4AF37 !important;
+    color: #210303 !important;
 }
 
 .location-filters .btn-group {
@@ -209,6 +227,41 @@
         margin: 5px 0;
     }
 }
+
+/* SUPER OVERRIDE - Eliminar todos los degradados de Bootstrap */
+.btn-group > .btn,
+.btn-group > .btn:active,
+.btn-group > .btn:focus,
+.btn-group > .btn:hover,
+.btn-group > .btn.active,
+.btn-group > .btn[data-active="true"] {
+    background: #d03336 !important;
+    background-color: #d03336 !important;
+    background-image: none !important;
+    border-color: #d03336 !important;
+    box-shadow: none !important;
+    filter: none !important;
+    color: white !important;
+}
+
+.btn-group > .btn:first-child,
+.btn-group > .btn:last-child {
+    background: #d03336 !important;
+    background-image: none !important;
+}
+
+/* Botón activo con más opacidad */
+.btn-group > .btn[data-active="true"] {
+    opacity: 1 !important;
+}
+
+.btn-group > .btn:not([data-active="true"]) {
+    opacity: 0.85 !important;
+}
+
+.btn-group > .btn:not([data-active="true"]):hover {
+    opacity: 1 !important;
+}
 </style>
 
 <!-- JavaScript para filtros -->
@@ -217,21 +270,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const filterButtons = document.querySelectorAll('[data-location]');
     const productItems = document.querySelectorAll('.product-item');
     const noProductsMessage = document.getElementById('no-products-message');
+    const productsContainer = document.getElementById('products-container');
 
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
             const selectedLocation = this.getAttribute('data-location');
             
-            // Actualizar botones activos
+            // Actualizar botones activos - SOLO cambiar el atributo data-active
             filterButtons.forEach(btn => {
-                btn.classList.remove('active');
-                btn.classList.add('btn-outline-walpa');
-                btn.classList.remove('btn-walpa');
+                btn.removeAttribute('data-active');
             });
-            
-            this.classList.add('active');
-            this.classList.remove('btn-outline-walpa');
-            this.classList.add('btn-walpa');
+            this.setAttribute('data-active', 'true');
 
             // Filtrar productos
             let visibleCount = 0;
@@ -240,17 +289,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 if (selectedLocation === 'all' || itemLocationId === selectedLocation) {
                     item.style.display = 'block';
+                    item.style.opacity = '1';
                     visibleCount++;
                 } else {
                     item.style.display = 'none';
+                    item.style.opacity = '0';
                 }
             });
 
             // Mostrar mensaje si no hay productos
             if (visibleCount === 0 && selectedLocation !== 'all') {
                 noProductsMessage.style.display = 'block';
+                productsContainer.style.display = 'none';
             } else {
                 noProductsMessage.style.display = 'none';
+                productsContainer.style.display = 'flex';
             }
         });
     });

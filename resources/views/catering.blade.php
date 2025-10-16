@@ -350,14 +350,26 @@
 }
 
 .catering-page {
-    background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+    background: #fec601;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
+    position: relative;
+}
+
+.catering-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    pointer-events: none;
 }
 
 /* Hero Banner rediseñado */
 .hero-banner {
-    background: linear-gradient(135deg, var(--walpa-dark-brown) 0%, var(--walpa-brown) 50%, #A0522D 100%);
+    background: #210303;
     color: white;
     padding: 5rem 0 4rem;
     position: relative;
@@ -371,21 +383,21 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 50%, rgba(255,215,0,0.1) 0%, transparent 50%);
+    background: transparent;
 }
 
 .service-badge {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: linear-gradient(135deg, var(--walpa-gold), var(--walpa-yellow));
-    color: var(--walpa-dark-brown);
+    background: #fec601;
+    color: #210303;
     padding: 8px 20px;
     border-radius: 25px;
     font-size: 0.9rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    box-shadow: var(--shadow);
+    box-shadow: 0 4px 15px rgba(254,198,1,0.4);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -413,12 +425,8 @@
 }
 
 .highlight {
-    background: linear-gradient(45deg, var(--walpa-yellow), var(--walpa-orange));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #fec601;
     font-weight: 900;
-    text-shadow: none;
 }
 
 .rating-container {
@@ -479,7 +487,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
+    background: rgba(0,0,0,0.5);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -511,9 +519,9 @@
 
 /* Header mejorado */
 .catering-header {
-    background-color: white;
+    background: #210303;
     padding: 2rem 0 1rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 3px solid #fec601;
 }
 
 .header-content {
@@ -523,10 +531,10 @@
 .page-title {
     font-size: 2rem;
     font-weight: 600;
-    color: var(--text-dark);
+    color: #fec601;
     margin-bottom: 1.5rem;
     display: inline-block;
-    border-left: 4px solid var(--text-dark);
+    border-left: 4px solid #fec601;
     padding-left: 1rem;
 }
 
@@ -539,7 +547,7 @@
 }
 
 .nav-btn {
-    background-color: var(--text-light);
+    background-color: #778089;
     color: white;
     border: none;
     padding: 8px 16px;
@@ -553,13 +561,15 @@
 
 .nav-btn:hover,
 .nav-btn.active {
-    background-color: var(--walpa-gold);
+    background: #fec601;
+    color: #210303;
     transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(254,198,1,0.4);
 }
 
 /* Sección de descripción rediseñada */
 .hero-description {
-    background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+    background: #fec601;
     padding: 4rem 0;
     position: relative;
 }
@@ -571,26 +581,27 @@
     left: 0;
     right: 0;
     height: 40px;
-    background: linear-gradient(135deg, var(--walpa-dark-brown) 0%, var(--walpa-brown) 50%, #A0522D 100%);
+    background: #210303;
     clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
 }
 
 .description-card {
-    background: var(--white);
+    background: white;
     border-radius: 25px;
     overflow: hidden;
-    box-shadow: var(--shadow);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
     transition: all 0.3s ease;
+    border: 3px solid #210303;
 }
 
 .description-card:hover {
-    box-shadow: var(--shadow-hover);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
     transform: translateY(-5px);
 }
 
 .card-header {
-    background: linear-gradient(135deg, var(--walpa-gold) 0%, var(--walpa-yellow) 100%);
-    color: var(--walpa-dark-brown);
+    background: #210303;
+    color: #fec601;
     padding: 1.5rem 2rem;
     text-align: center;
 }
@@ -616,7 +627,7 @@
 .description-text {
     font-size: 1.1rem;
     line-height: 1.7;
-    color: var(--text-dark);
+    color: #210303;
     text-align: center;
     margin-bottom: 2rem;
     font-weight: 500;
@@ -631,7 +642,7 @@
 }
 
 .contact-card {
-    background: linear-gradient(135deg, #F8F9FA, var(--white));
+    background: #F8F9FA;
     padding: 1.5rem;
     border-radius: 15px;
     display: flex;
@@ -661,15 +672,15 @@
 }
 
 .contact-icon.phone {
-    background: linear-gradient(135deg, #4CAF50, #45a049);
+    background: #4CAF50;
 }
 
 .contact-icon.email {
-    background: linear-gradient(135deg, #2196F3, #1976D2);
+    background: #2196F3;
 }
 
 .contact-icon.address {
-    background: linear-gradient(135deg, #FF5722, #E64A19);
+    background: #FF5722;
 }
 
 .contact-details {
@@ -699,7 +710,7 @@
 
 .catering-form,
 .reservation-form {
-    background: linear-gradient(135deg, var(--walpa-brown) 0%, var(--walpa-dark-brown) 100%);
+    background: #210303;
     padding: 1.5rem;
     border-radius: 10px;
     color: white;
@@ -765,7 +776,7 @@
 
 /* Sección de reservas optimizada */
 .reservation-section {
-    background: linear-gradient(135deg, var(--walpa-yellow) 0%, #FFA500 100%);
+    background: #fec601;
     padding: 2rem;
     border-radius: 10px;
     margin-top: 2rem;
@@ -841,14 +852,14 @@
 
 .package-card-modern:first-child {
     border-color: var(--walpa-gold);
-    background: linear-gradient(135deg, #FFFEF7 0%, var(--white) 100%);
+    background: #FFFEF7;
 }
 
 .package-badge-modern {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: linear-gradient(135deg, var(--walpa-gold), var(--walpa-yellow));
+    background: #fec601;
     color: var(--walpa-dark-brown);
     padding: 8px 15px;
     border-radius: 20px;
@@ -881,7 +892,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+    background: #E3F2FD;
     color: #1976D2;
     padding: 8px 15px;
     border-radius: 15px;
@@ -900,7 +911,7 @@
 }
 
 .package-price {
-    background: linear-gradient(135deg, #F3E5F5, #E1BEE7);
+    background: #F3E5F5;
     border-radius: 15px;
     padding: 1rem;
     text-align: center;
@@ -934,7 +945,7 @@
 
 .btn-package-modern {
     width: 100%;
-    background: linear-gradient(135deg, var(--walpa-dark-brown), var(--walpa-brown));
+    background: #210303;
     color: white;
     border: none;
     padding: 15px 25px;
@@ -952,18 +963,18 @@
 }
 
 .btn-package-modern:hover {
-    background: linear-gradient(135deg, var(--walpa-brown), var(--walpa-dark-brown));
+    background: #2c1810;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(139, 69, 19, 0.3);
 }
 
 .package-card-modern:first-child .btn-package-modern {
-    background: linear-gradient(135deg, var(--walpa-gold), var(--walpa-yellow));
+    background: #fec601;
     color: var(--walpa-dark-brown);
 }
 
 .package-card-modern:first-child .btn-package-modern:hover {
-    background: linear-gradient(135deg, var(--walpa-yellow), var(--walpa-gold));
+    background: #f8d000;
 }
 
 .reservation-title {
@@ -975,21 +986,24 @@
 
 /* Clientes optimizado */
 .clients-section {
-    padding: 2rem 0;
+    padding: 3rem 0;
+    background: #fec601;
 }
 
 .clients-header {
-    background: var(--walpa-yellow);
+    background: #210303;
     text-align: center;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border-radius: 15px;
 }
 
 .clients-header h2 {
     margin: 0;
-    color: var(--text-dark);
-    font-size: 1.8rem;
-    font-weight: 600;
+    color: #fec601;
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
 }
 
 .clients-content {
@@ -1002,22 +1016,29 @@
 .client-item {
     text-align: center;
     background: white;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    border: 2px solid #210303;
+    transition: all 0.3s ease;
+}
+
+.client-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 .client-logo img {
-    max-width: 80px;
+    max-width: 100px;
     height: auto;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .client-item h5 {
     margin: 0;
-    color: var(--text-dark);
-    font-size: 1rem;
-    font-weight: 600;
+    color: #210303;
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
 /* Responsive */

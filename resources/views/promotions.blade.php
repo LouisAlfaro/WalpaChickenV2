@@ -120,15 +120,39 @@
 <!-- CSS personalizado -->
 <style>
 .promotions-page {
-    background-color: #f8f9fa;
+    background: #fec601;
     min-height: 100vh;
+    position: relative;
+}
+
+.promotions-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .promotions-header {
-    background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
-    color: white;
+    background: #210303;
+    color: #fec601;
     margin-bottom: 0;
     position: relative;
+    padding: 4rem 0;
+}
+
+.promotions-header h1 {
+    color: #fec601;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.promotions-header p {
+    color: rgba(254,198,1,0.9);
 }
 
 .promotions-header::after {
@@ -138,40 +162,41 @@
     left: 0;
     right: 0;
     height: 50px;
-    background: linear-gradient(45deg, transparent 50%, #f8f9fa 50%);
+    background: linear-gradient(45deg, transparent 50%, #fec601 50%);
 }
 
 .text-walpa {
-    color: #D4AF37 !important;
+    color: #210303 !important;
 }
 
 .btn-walpa {
-    background-color: #D4AF37;
-    border-color: #D4AF37;
-    color: white;
-    font-weight: 600;
+    background: #210303;
+    border: none;
+    color: #fec601;
+    font-weight: 700;
     transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(33,3,3,0.4);
 }
 
 .btn-walpa:hover {
-    background-color: #B8860B;
-    border-color: #B8860B;
-    color: white;
+    background: #2c1810;
+    color: #fec601;
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 8px 25px rgba(33,3,3,0.5);
 }
 
 .btn-outline-walpa {
-    border-color: #D4AF37;
-    color: #D4AF37;
-    font-weight: 600;
+    border: 3px solid #210303;
+    color: #210303;
+    background: transparent;
+    font-weight: 700;
     transition: all 0.3s ease;
 }
 
 .btn-outline-walpa:hover {
-    background-color: #D4AF37;
-    border-color: #D4AF37;
-    color: white;
+    background-color: #210303;
+    border-color: #210303;
+    color: #fec601;
     transform: translateY(-2px);
 }
 
@@ -188,10 +213,13 @@
     overflow: hidden;
     transition: all 0.3s ease;
     cursor: pointer;
+    background: white;
+    border: 3px solid transparent;
 }
 
 .promotion-item:hover {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border-color: #210303;
 }
 
 .promotion-image-container {
@@ -224,7 +252,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(212, 175, 55, 0.85);
+    background: rgba(33,3,3,0.85);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -242,21 +270,37 @@
     transition: transform 0.3s ease;
 }
 
+.overlay-content i,
+.overlay-content p {
+    color: #fec601;
+}
+
 .promotion-item:hover .overlay-content {
     transform: translateY(0);
 }
 
 .promotion-dates {
     border-top: 1px solid #eee;
-    background-color: #f8f9fa;
+    background: #fec601;
+    color: #210303;
     margin: 0 -1.25rem -1.25rem;
     padding: 0.75rem 1.25rem;
+    font-weight: 600;
 }
 
 .cta-section {
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(184, 134, 11, 0.1) 100%);
+    background: #210303;
     border-radius: 15px;
-    border: 2px solid rgba(212, 175, 55, 0.2);
+    border: 3px solid #fec601;
+    padding: 3rem;
+}
+
+.cta-section h3 {
+    color: #fec601 !important;
+}
+
+.cta-section p {
+    color: rgba(254,198,1,0.9);
 }
 
 .empty-state {

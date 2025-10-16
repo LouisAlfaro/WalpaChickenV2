@@ -27,7 +27,7 @@ class WelcomeController extends Controller
             $promotionSliders = Slider::active()->bySection('promotions')->ordered()->get();
             $favoriteSliders = Slider::active()->bySection('favorites')->ordered()->get();
             $socialPosts = SocialPost::active()->ordered()->get();
-            $favorites = Favorite::where('active', true)->orderBy('order', 'asc')->take(3)->get();
+            $favorites = Favorite::where('active', true)->orderBy('order', 'asc')->take(5)->get();
             $locations = Location::where('active', true)->orderBy('order', 'asc')->get();
         } catch (\Exception $e) {
             // Si hay error (tabla no existe), usar colecciones vacías
