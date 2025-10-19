@@ -61,15 +61,15 @@
 /* SECCIÓN OPORTUNIDADES */
 .opportunities-section {
     background: #fec601 !important;
-    padding: 80px 0 !important;
+    padding: 30px 0 !important;
 }
 
 /* HEADER DE SECCIÓN - CAJA LIMPIA */
 .section-header {
     background: #210303 !important;
-    padding: 3rem 2rem !important;
+    padding: 1.5rem 2rem !important;
     border-radius: 20px !important;
-    margin-bottom: 3rem !important;
+    margin-bottom: 1.5rem !important;
     box-shadow: 0 15px 40px rgba(0,0,0,0.3) !important;
     border: none !important;
 }
@@ -92,7 +92,7 @@
     color: white !important;
     font-size: 3rem !important;
     font-weight: 900 !important;
-    margin: 20px 0 15px 0 !important;
+    margin: 10px 0 10px 0 !important;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3) !important;
 }
 

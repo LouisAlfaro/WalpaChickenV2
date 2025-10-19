@@ -390,7 +390,7 @@
 .hero-banner {
     background: #210303;
     color: white;
-    padding: 5rem 0 4rem;
+    padding: 1rem 0 0.5rem;
     position: relative;
     overflow: hidden;
 }
@@ -541,8 +541,8 @@
 
 /* Header mejorado */
 .catering-header {
-    background: #210303;
-    padding: 2rem 0 1rem;
+    background: #fec601;
+    padding: 1.5rem 0 0.8rem;
     border-bottom: 3px solid #fec601;
 }
 
@@ -553,10 +553,10 @@
 .page-title {
     font-size: 2rem;
     font-weight: 600;
-    color: #fec601;
-    margin-bottom: 1.5rem;
+    color: #210303;
+    margin-bottom: 1rem;
     display: inline-block;
-    border-left: 4px solid #fec601;
+    border-left: 4px solid #210303;
     padding-left: 1rem;
 }
 
@@ -592,7 +592,7 @@
 /* Sección de descripción rediseñada */
 .hero-description {
     background: #fec601;
-    padding: 4rem 0;
+    padding: 1.5rem 0 0.5rem 0;
     position: relative;
 }
 
@@ -651,7 +651,7 @@
     line-height: 1.7;
     color: #210303;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
     font-weight: 500;
 }
 
@@ -660,7 +660,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .contact-card {
@@ -727,7 +727,7 @@
 
 /* Formularios más compactos */
 .forms-container {
-    padding: 2rem 0;
+    padding: 1rem 0;
 }
 
 .catering-form,
@@ -798,10 +798,10 @@
 
 /* Sección de reservas optimizada */
 .reservation-section {
-    background: #fec601;
-    padding: 2rem;
+    background: #210303;
+    padding: 1rem;
     border-radius: 10px;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .reservation-header {
@@ -821,18 +821,18 @@
 
 /* Paquetes rediseñados */
 .packages-section {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 }
 
 .packages-header {
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
 }
 
 .packages-header h3 {
     font-size: 2rem;
     font-weight: 700;
-    color: var(--walpa-dark-brown);
+    color:  var(--walpa-gold);
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
@@ -897,8 +897,8 @@
 }
 
 .package-content {
-    padding: 2rem;
-    padding-top: 3rem;
+    padding: 1rem;
+    padding-top: 1.5rem;
 }
 
 .package-title {
@@ -1008,15 +1008,15 @@
 
 /* Clientes optimizado */
 .clients-section {
-    padding: 3rem 0;
+    padding: 0.5rem 0 1.5rem 0;
     background: #fec601;
 }
 
 .clients-header {
     background: #210303;
     text-align: center;
-    padding: 2rem;
-    margin-bottom: 3rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
     border-radius: 15px;
 }
 
@@ -1038,7 +1038,7 @@
 .client-item {
     text-align: center;
     background: white;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.15);
     border: 2px solid #210303;
@@ -1462,6 +1462,13 @@
     
     .promo-image {
         margin-top: 1.5rem;
+    }
+
+}
+
+@media (min-width: 993px) {
+    .image-frame {
+        margin-left: -250px; /* mueve la imagen un poco a la izquierda */
     }
 }
 </style>

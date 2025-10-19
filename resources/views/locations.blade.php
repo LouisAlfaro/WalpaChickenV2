@@ -96,7 +96,7 @@
 .locations-page {
     background: linear-gradient(135deg, #fec601 0%, #f8d000 50%, #e6c200 100%);
     min-height: 100vh;
-    padding: 40px 0 80px;
+    padding: 5px 0 5px;
     position: relative;
 }
 
@@ -116,14 +116,14 @@
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 10px;
     position: relative;
     z-index: 2;
 }
 
 /* Header de la página */
 .page-header {
-    margin-bottom: 50px;
+    margin-bottom: 5px;
     text-align: left;
 }
 
@@ -153,7 +153,7 @@
 .locations-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 0px;
 }
 
 /* Tarjeta de local - MEJORADA */
@@ -169,6 +169,7 @@
     grid-template-columns: 450px 1fr;
     position: relative;
     min-height: 380px;
+    margin: 5px;
 }
 
 .location-card:hover {
@@ -228,7 +229,7 @@
 
 /* Contenido del local */
 .location-content {
-    padding: 40px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -280,7 +281,7 @@
 
 /* Detalles del local */
 .location-details {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     padding-left: 20px;
 }
 
@@ -406,7 +407,7 @@
 /* Estado vacío */
 .no-locations {
     text-align: center;
-    padding: 80px 20px;
+    padding: 20px 20px;
     max-width: 500px;
     margin: 0 auto;
 }
@@ -444,7 +445,7 @@
 
 @media (max-width: 768px) {
     .locations-page {
-        padding: 30px 0 60px;
+        padding: 15px 0 30px;
     }
     
     .page-title {
@@ -463,7 +464,7 @@
     }
     
     .location-content {
-        padding: 30px;
+        padding: 20px;
     }
     
     .location-name {

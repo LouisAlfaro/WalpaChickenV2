@@ -40,6 +40,54 @@ body {
     padding: 0;
 }
 
+/* ESPACIADO GLOBAL REDUCIDO PARA TODAS LAS PÁGINAS */
+.container,
+.container-fluid {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+.py-5 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+}
+
+.py-4 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+.mb-5 {
+    margin-bottom: 1.5rem !important;
+}
+
+.mb-4 {
+    margin-bottom: 1rem !important;
+}
+
+.my-5 {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+/* Headers de todas las páginas */
+.menu-header,
+.catering-hero,
+.company-hero,
+.opportunities-hero,
+.locations-hero,
+.promotions-header {
+    padding: 1.5rem 0 !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Secciones generales */
+section,
+.section {
+    
+    margin: 0 !important;
+}
+
 .container-fluid {
     padding: 0;
 }
@@ -242,14 +290,14 @@ body {
     background: #fec601;
     margin: 0 !important;
     position: relative;
-    padding: 2rem 0;
+    padding: 0;
 }
 
 .section-title {
     background: linear-gradient(135deg, var(--color-fondo-terciario), var(--color-fondo-senario));
     color: var(--color-texto-primario);
     text-align: center;
-    padding: 3rem;
+    padding: 1rem;
     margin: 0 !important; /* Sin márgenes */
     font-size: 2.8rem;
     font-weight: bold;
@@ -277,7 +325,7 @@ body {
 .container {
     margin-bottom: 0 !important;
     margin-top: 0 !important;
-    padding: 4rem;
+    padding: 2rem;
 }
 
 .promotion-card {
@@ -327,7 +375,7 @@ body {
 /* Sección de Favoritos - Versión Mejorada */
 .favorites-section {
     background: linear-gradient(135deg, #fec601 0%, #f8d000 50%, #e6c200 100%);
-    padding: 80px 0;
+    padding: 0px 0 15px 0;
     position: relative;
     overflow: hidden;
 }
@@ -367,7 +415,8 @@ body {
 
 .section-title-favorites {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 8px;
+    margin-top: -30px;
     position: relative;
     z-index: 10;
 }
@@ -380,7 +429,8 @@ body {
         2px 2px 0px rgba(255,255,255,0.3),
         4px 4px 8px rgba(0,0,0,0.1);
     letter-spacing: -1px;
-    margin-bottom: 15px;
+    margin-bottom: 0;
+    padding-top: 0;
 }
 
 .section-subtitle {
@@ -388,14 +438,15 @@ body {
     font-weight: 400;
     color: #2c1810;
     opacity: 0.85;
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 8px;
     font-style: italic;
 }
 
 .favorites-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 15px;
     max-width: 1900px;
     margin: 0 auto;
     position: relative;
@@ -853,8 +904,8 @@ body {
 .social-community-section .row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    padding: 2rem 0;
+    gap: 1rem;
+    padding: 0.5rem 0;
     margin: 0;
 }
 
@@ -940,7 +991,7 @@ body {
 .social-post-media iframe,
 .social-post-media video {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: contain; /* 🔹 muestra todo el contenido sin recortar */
     border: none;
 }
@@ -1118,7 +1169,7 @@ body {
 
 .locations-section {
     background: #210303;
-    padding: 80px 100px;
+    padding: 20px 60px;
     position: relative;
     overflow: visible;
 }
@@ -1129,7 +1180,7 @@ body {
 
 .locations-title {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 15px;
     position: relative;
     z-index: 10;
     font-size: 3rem;
@@ -1143,7 +1194,7 @@ body {
     font-size: 1.2rem;
     font-weight: 400;
     color: rgba(255,255,255,0.8);
-    margin-top: 10px;
+    margin-top: 5px;
     font-style: italic;
 }
 
@@ -1221,7 +1272,7 @@ body {
 
 /* INFO - COLUMNA DERECHA */
 .location-info {
-    padding: 70px;
+    padding: 40px;
     background: #fff;
     margin: 0;
     display: flex;
@@ -1235,14 +1286,14 @@ body {
     font-weight: 900;
     color: #210303;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     letter-spacing: 1px;
     text-align: left;
 }
 .location-address {
     font-size: 1.3rem;
     color: #666;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: left;
 }
 
@@ -1327,12 +1378,12 @@ body {
 /* CTA */
 .locations-cta {
     text-align: center;
-    margin-top: 60px;
+    margin-top: 30px;
 }
 .btn-all-locations {
     background: linear-gradient(135deg, #fec601, #e6b800);
     color: #2c1810;
-    padding: 18px 45px;
+    padding: 15px 35px;
     font-size: 1.3rem;
     font-weight: 700;
     border-radius: 50px;
@@ -1479,7 +1530,7 @@ body {
 }
 
 .home-location-info {
-    padding: 50px 40px;
+    padding: 30px 25px;
     background: #210303;
     text-align: center;
     width: 100%;
@@ -1495,7 +1546,7 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     letter-spacing: 2px;
     text-shadow: 0 4px 10px rgba(254,198,1,0.3);
     position: relative;
@@ -1517,8 +1568,8 @@ body {
 .home-location-address {
     font-size: 1.5rem;
     color: #fff;
-    margin-bottom: 35px;
-    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-top: 10px;
     font-weight: 400;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
@@ -1526,7 +1577,7 @@ body {
 .home-location-actions {
     display: flex;
     justify-content: center;
-    gap: 35px;
+    gap: 20px;
 }
 
 .home-location-btn {
@@ -2012,13 +2063,22 @@ body {
 }
 
 .delivery-platform-img {
-    width: 32px !important;
-    height: 32px !important;
+    width: 20px !important;
+    height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
     object-fit: cover !important;
-    border-radius: 6px !important;
-    margin-right: 12px !important;
-    border: 1px solid #eee !important;
+    border-radius: 3px !important;
+    margin-right: 8px !important;
+    border: 1px solid #ddd !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    flex-shrink: 0 !important;
 }
+
+
 
 /* Responsive para móviles */
 @media (max-width: 991px) {
@@ -2155,7 +2215,7 @@ body {
                             @foreach($deliveryPlatforms as $platform)
                             <li>
                                 <a class="dropdown-item delivery-platform-link" href="{{ $platform->link }}" target="_blank">
-                                    <img src="{{ $platform->image_url }}" alt="{{ $platform->name }}" class="delivery-platform-img">
+                                    <img src="{{ $platform->image_url }}" alt="{{ $platform->name }}" class="delivery-platform-img" style="width: 20px !important; height: 20px !important; max-width: 20px !important; max-height: 20px !important; object-fit: cover !important;">
                                     {{ $platform->name }}
                                 </a>
                             </li>

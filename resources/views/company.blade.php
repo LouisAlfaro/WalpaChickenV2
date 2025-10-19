@@ -3,18 +3,18 @@
 @section('content')
 <div class="company-page">
     <!-- Header -->
-    <div class="company-header text-center py-5">
+    <div class="company-header text-center py-2">
         <h1 class="display-4 text-white">Nuestra Empresa</h1>
         <p class="lead text-white">Conoce más sobre Walpa Chicken y nuestros valores</p>
     </div>
 
-    <div class="container py-5">
+    <div class="container py-2">
         <!-- Secciones principales: Misión y Valores lado a lado -->
         @if($mission || $values)
-            <div class="row mb-5">
+            <div class="row mb-3">
                 <!-- Misión -->
                 @if($mission)
-                    <div class="col-lg-6 mb-4">
+                    <div class="col-lg-6 mb-2">
                         <div class="company-section h-100">
                             <div class="section-header">
                                 <span class="section-badge">{{ strtoupper($mission->type) }}</span>
@@ -38,7 +38,7 @@
 
                 <!-- Valores -->
                 @if($values)
-                    <div class="col-lg-6 mb-4">
+                    <div class="col-lg-6 mb-2">
                         <div class="company-section h-100">
                             <div class="section-header">
                                 <span class="section-badge">{{ strtoupper($values->type) }}</span>
@@ -341,7 +341,7 @@
 .company-section {
     background: white;
     border-radius: 15px;
-    padding: 2rem;
+    padding: 1rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease;
     border-left: 4px solid #210303;
@@ -353,7 +353,7 @@
 }
 
 .section-header {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .section-badge {

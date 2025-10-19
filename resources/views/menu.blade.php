@@ -99,7 +99,8 @@
 .menu-header {
     background: #210303;
     color: white;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
+    padding: 1rem 0 !important;
 }
 
 .text-walpa {
