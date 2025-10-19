@@ -264,55 +264,6 @@
 }
 </style>
 <div class="opportunities-page">
-    <!-- Hero Section -->
-    <section class="hero-opportunities">
-        <div class="hero-overlay"></div>
-        <div class="container">
-            <div class="row align-items-center min-vh-80">
-                <div class="col-lg-6">
-                    <div class="hero-content">
-                        <div class="hero-badge">
-                            <i class="fas fa-rocket me-2"></i>
-                            Únete al Equipo
-                        </div>
-                        <h1 class="hero-title">
-                            Descubre las <span class="text-gradient">Oportunidades</span><br>
-                            que tenemos para ti
-                        </h1>
-                        <p class="hero-subtitle">
-                            Forma parte de la familia Walpa y haz crecer tu futuro profesional con nosotros
-                        </p>
-                        <div class="hero-buttons">
-                            <a href="#comercial" class="btn btn-primary-walpa me-3">
-                                <i class="fas fa-handshake me-2"></i>Comercial
-                            </a>
-                            <a href="#trabajo" class="btn btn-outline-light">
-                                <i class="fas fa-briefcase me-2"></i>Trabajo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="hero-image">
-                        @if(!empty($contents['trabajo']->image))
-                            <img src="{{ asset('storage/opportunities/' . $contents['trabajo']->image) }}" 
-                                alt="{{ $contents['trabajo']->title ?? 'Equipo Walpa' }}" 
-                                class="img-fluid rounded-4 shadow-lg">
-                        @else
-                            <img src="{{ asset('images/default-team.jpg') }}" 
-                                alt="Equipo Walpa" 
-                                class="img-fluid rounded-4 shadow-lg">
-                        @endif
-                        <div class="stats-badge">
-                            <i class="fas fa-users text-primary"></i>
-                            <span>+500 Colaboradores</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Success Message -->
     @if(session('success'))
     <div class="alert alert-success alert-dismissible fade show m-4 rounded-3" role="alert">
@@ -324,12 +275,32 @@
     <!-- Oportunidades Section -->
     <section class="opportunities-section">
         <div class="container">
-            <div class="section-header text-center mb-5">
-                <span class="section-badge">Oportunidades</span>
-                <h2 class="section-title">¿Qué oportunidad es para ti?</h2>
-                <p class="section-subtitle">
-                    Elige la opción que mejor se adapte a tus objetivos y comienza tu aventura con nosotros
-                </p>
+            <div class="row align-items-center mb-5">
+                <!-- Imagen -->
+                <div class="col-lg-6">
+                    <div class="hero-image">
+                        @if(!empty($contents['trabajo']->image))
+                            <img src="{{ asset('storage/opportunities/' . $contents['trabajo']->image) }}" 
+                                alt="{{ $contents['trabajo']->title ?? 'Equipo Walpa' }}" 
+                                class="img-fluid rounded-4 shadow-lg opportunity-hero-img">
+                        @else
+                            <img src="{{ asset('images/opportunities-hero.jpg') }}" 
+                                alt="Oportunidades Walpa" 
+                                class="img-fluid rounded-4 shadow-lg opportunity-hero-img">
+                        @endif
+                    </div>
+                </div>
+                
+                <!-- Header de Sección -->
+                <div class="col-lg-6">
+                    <div class="section-header text-center">
+                        <span class="section-badge">Oportunidades</span>
+                        <h2 class="section-title">¿Qué oportunidad es para ti?</h2>
+                        <p class="section-subtitle">
+                            Elige la opción que mejor se adapte a tus objetivos y comienza tu aventura con nosotros
+                        </p>
+                    </div>
+                </div>
             </div>
             
             <div class="row g-4">
@@ -340,11 +311,11 @@
                             <div class="card-icon commercial-icon">
                                 <i class="fas fa-handshake"></i>
                             </div>
-                            <span class="card-badge">Comercial</span>
+                            <span class="card-badge">{{ $contents['comercial']->badge_title ?? 'COMERCIAL' }}</span>
                         </div>
                         
                         <div class="card-body">
-                            <h3 class="card-title">{{ $contents['comercial']->title ?? 'Oportunidades Comerciales' }}</h3>
+                            <h3 class="card-title">{{ $contents['comercial']->subtitle ?? 'Form Comercial' }}</h3>
                             <p class="card-description">{{ $contents['comercial']->description ?? 'Sé parte de nuestro crecimiento comercial y expande tu red de negocios' }}</p>
                             
                             <div class="card-features">
@@ -379,11 +350,11 @@
                             <div class="card-icon provider-icon">
                                 <i class="fas fa-truck"></i>
                             </div>
-                            <span class="card-badge">Proveedores</span>
+                            <span class="card-badge">{{ $contents['proveedores']->badge_title ?? 'PROVEEDORES' }}</span>
                         </div>
                         
                         <div class="card-body">
-                            <h3 class="card-title">{{ $contents['proveedores']->title ?? 'Proveedores' }}</h3>
+                            <h3 class="card-title">{{ $contents['proveedores']->subtitle ?? 'Proveedores' }}</h3>
                             <p class="card-description">{{ $contents['proveedores']->description ?? 'Conviértete en nuestro proveedor de confianza y crece junto a nosotros' }}</p>
                             
                             <div class="card-features">
@@ -414,16 +385,16 @@
                 <!-- Trabajo -->
                 <div class="col-lg-4" id="trabajo">
                     <div class="opportunity-card job-card h-100 featured">
-                        <div class="featured-ribbon">Más Popular</div>
+                        <div class="featured-ribbon"></div>
                         <div class="card-header-icon">
                             <div class="card-icon job-icon">
                                 <i class="fas fa-briefcase"></i>
                             </div>
-                            <span class="card-badge">Trabajo</span>
+                            <span class="card-badge">{{ $contents['trabajo']->badge_title ?? 'TRABAJO' }}</span>
                         </div>
                         
                         <div class="card-body">
-                            <h3 class="card-title">{{ $contents['trabajo']->title ?? 'Oportunidades de Trabajo' }}</h3>
+                            <h3 class="card-title">{{ $contents['trabajo']->subtitle ?? 'TRABAJO' }}</h3>
                             <p class="card-description">{{ $contents['trabajo']->description ?? 'Únete a nuestro equipo y crece profesionalmente en un ambiente dinámico' }}</p>
                             
                             <div class="card-features">
@@ -492,7 +463,7 @@
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
-            <form action="{{ route('opportunities.apply', 'comercial') }}" method="POST">
+            <form action="{{ route('opportunities.apply', 'comercial') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="row g-3">
@@ -515,6 +486,11 @@
                         <div class="col-12">
                             <label class="form-label">Tipo de Negocio *</label>
                             <input type="text" class="form-control" name="business_type" required>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Propuesta Comercial (PDF, DOC, DOCX)</label>
+                            <input type="file" class="form-control" name="attachment" accept=".pdf,.doc,.docx">
+                            <small class="text-muted">Opcional: Adjunta tu propuesta comercial o documentos relevantes</small>
                         </div>
                         <div class="col-12">
                             <label class="form-label">Mensaje *</label>
@@ -544,7 +520,7 @@
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
             </div>
-            <form action="{{ route('opportunities.apply', 'proveedores') }}" method="POST">
+            <form action="{{ route('opportunities.apply', 'proveedores') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="row g-3">
@@ -567,6 +543,11 @@
                         <div class="col-12">
                             <label class="form-label">Productos/Servicios *</label>
                             <textarea class="form-control" name="products_services" rows="3" required></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Catálogo o Documentos (PDF, DOC, DOCX)</label>
+                            <input type="file" class="form-control" name="attachment" accept=".pdf,.doc,.docx">
+                            <small class="text-muted">Opcional: Adjunta tu catálogo de productos o documentos de la empresa</small>
                         </div>
                         <div class="col-12">
                             <label class="form-label">Mensaje *</label>
@@ -797,7 +778,15 @@
 
 .hero-image {
     position: relative;
-    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.opportunity-hero-img {
+    border: 5px solid #210303 !important;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 20px !important;
 }
 
 .stats-badge {

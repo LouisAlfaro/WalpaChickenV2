@@ -106,7 +106,7 @@
      color: white;
 }
 
-/* FORZAR BOTONES ROJOS SÓLIDOS SIN DEGRADADOS */
+/* FORZAR BOTONES COLOR #210303 SÓLIDOS SIN DEGRADADOS */
 .location-filters .btn,
 .location-filters .btn:active,
 .location-filters .btn:focus,
@@ -120,8 +120,8 @@
 .btn-outline-walpa:active,
 .btn-outline-walpa:focus,
 .btn-outline-walpa.active {
-    background: #d03336 !important;
-    background-color: #d03336 !important;
+    background: #210303 !important;
+    background-color: #210303 !important;
     background-image: none !important;
     border: none !important;
     color: white !important;
@@ -130,31 +130,33 @@
     box-shadow: none !important;
     filter: none !important;
     text-shadow: none !important;
+    opacity: 1 !important;
 }
 
 .location-filters .btn:hover,
 .btn-walpa:hover {
-    background: #b02a2d !important;
-    background-color: #b02a2d !important;
+    background: #210303 !important;
+    background-color: #210303 !important;
     background-image: none !important;
     color: white !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(208,51,54, 0.3) !important;
+    box-shadow: 0 4px 8px rgba(33, 3, 3, 0.3) !important;
     filter: none !important;
+    opacity: 1 !important;
 }
 
 .btn-outline-walpa {
-    opacity: 0.85;
+    opacity: 1 !important;
 }
 
 .btn-outline-walpa:hover {
-    opacity: 1;
+    opacity: 1 !important;
     transform: translateY(-2px);
 }
 
 .product-card {
     border: 2px solid #210303 !important;
-    border-radius: 15px;
+    border-radius: 0 !important;
     overflow: hidden;
     transition: all 0.3s ease;
     background: white;
@@ -235,28 +237,30 @@
 .btn-group > .btn:hover,
 .btn-group > .btn.active,
 .btn-group > .btn[data-active="true"] {
-    background: #d03336 !important;
-    background-color: #d03336 !important;
+    background: #210303 !important;
+    background-color: #210303 !important;
     background-image: none !important;
-    border-color: #d03336 !important;
+    border-color: #210303 !important;
     box-shadow: none !important;
     filter: none !important;
     color: white !important;
+    opacity: 1 !important;
 }
 
 .btn-group > .btn:first-child,
 .btn-group > .btn:last-child {
-    background: #d03336 !important;
+    background: #210303 !important;
     background-image: none !important;
+    opacity: 1 !important;
 }
 
-/* Botón activo con más opacidad */
+/* Botón activo */
 .btn-group > .btn[data-active="true"] {
     opacity: 1 !important;
 }
 
 .btn-group > .btn:not([data-active="true"]) {
-    opacity: 0.85 !important;
+    opacity: 1 !important;
 }
 
 .btn-group > .btn:not([data-active="true"]):hover {

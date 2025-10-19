@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Walpa - Restaurante Auténtico')
+@section('title', 'WalpaChicken - Restaurante Auténtico')
 
 @section('content')
 @if($mainSliders->count() > 0)
@@ -231,12 +231,6 @@
                 @endif
             </div>
         </div>
-        
-        <div class="text-center mt-4" style="z-index: 999; position: relative;">
-            <a href="/promociones" class="btn btn-promociones" style="pointer-events: auto; display: inline-block;">
-                VER PROMOCIONES
-            </a>
-        </div>
     </div>
 </div>
 @endif
@@ -281,31 +275,31 @@
 
         <!-- Carrousel de Ubicaciones CORREGIDO -->
         <div class="locations-carousel-container">
-            <div id="locationsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+            <div id="locationsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000" data-bs-wrap="true" data-bs-pause="hover">
                 
                 <!-- Items del Carrousel -->
                 <div class="carousel-inner">
                     @foreach($locations as $index => $location)
                         <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                            <div class="location-card">
+                            <div class="home-location-card">
                                 <!-- Imagen del Local -->
-                                <div class="location-image">
+                                <div class="home-location-image">
                                     <img src="{{ $location->image_url }}" 
                                          alt="{{ $location->name }}" 
                                          loading="lazy">
                                 </div>
 
                                 <!-- Información del Local -->
-                                <div class="location-info">
-                                    <h3 class="location-name">{{ $location->name ?: 'WALPA CHICKEN' }}</h3>
-                                    <p class="location-address">{{ $location->address ?: 'Dirección no disponible' }}</p>
+                                <div class="home-location-info">
+                                    <h3 class="home-location-name">{{ $location->name ?: 'WALPA CHICKEN' }}</h3>
+                                    <p class="home-location-address">{{ $location->address ?: 'Dirección no disponible' }}</p>
                                     
                                     <!-- Botones de Acción -->
-                                    <div class="location-actions">
+                                    <div class="home-location-actions">
                                         @if($location->whatsapp_url)
                                             <a href="{{ $location->whatsapp_url }}" 
                                                target="_blank" 
-                                               class="location-btn whatsapp-btn">
+                                               class="home-location-btn whatsapp-btn">
                                                 <i class="fab fa-whatsapp"></i>
                                             </a>
                                         @endif
@@ -313,7 +307,7 @@
                                         @if($location->maps_url)
                                             <a href="{{ $location->maps_url }}" 
                                                target="_blank" 
-                                               class="location-btn maps-btn">
+                                               class="home-location-btn maps-btn">
                                                 <i class="fas fa-map-marker-alt"></i>
                                             </a>
                                         @endif
@@ -325,13 +319,13 @@
                 </div>
 
                 <!-- Controles de Navegación -->
-                <button class="carousel-control-prev locations-control-prev" 
+                <button class="carousel-control-prev home-locations-control-prev" 
                         type="button" 
                         data-bs-target="#locationsCarousel" 
                         data-bs-slide="prev">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <button class="carousel-control-next locations-control-next" 
+                <button class="carousel-control-next home-locations-control-next" 
                         type="button" 
                         data-bs-target="#locationsCarousel" 
                         data-bs-slide="next">
@@ -339,7 +333,7 @@
                 </button>
 
                 <!-- Indicadores -->
-                <div class="carousel-indicators locations-indicators">
+                <div class="carousel-indicators home-locations-indicators">
                     @foreach($locations as $index => $location)
                         <button type="button" 
                                 data-bs-target="#locationsCarousel" 
@@ -499,20 +493,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var locationsCarousel = document.querySelector('#locationsCarousel');
     if (locationsCarousel) {
-        new bootstrap.Carousel(locationsCarousel, {
+        // Inicializar el carrusel con configuración específica
+        var carousel = new bootstrap.Carousel(locationsCarousel, {
             interval: 4000,
             wrap: true,
             pause: 'hover',
-            touch: true
+            touch: true,
+            ride: 'carousel'
         });
 
         // Prevenir flash blanco en el carrusel de locales
         locationsCarousel.addEventListener('slide.bs.carousel', function (e) {
             var items = locationsCarousel.querySelectorAll('.carousel-item');
             items.forEach(function(item) {
-                item.style.backgroundColor = '#1a0b0a';
+                item.style.backgroundColor = '#210303';
             });
         });
+        
+        // Asegurar que el carrusel comience automáticamente
+        carousel.cycle();
     }
 });
 </script>

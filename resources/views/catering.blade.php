@@ -6,7 +6,7 @@
     <div class="catering-header">
         <div class="container">
             <div class="header-content">
-                <h1 class="page-title">Catering</h1>
+                <h1 class="page-title">Ventas Corporativas</h1>     
                 
                 <!-- Botones de navegación más pequeños y organizados -->
                 <div class="nav-buttons">
@@ -35,7 +35,7 @@
                                 <i class="fas fa-concierge-bell"></i>
                                 <span>Servicio Premium</span>
                             </div>
-                            <h1 class="hero-title">{{ $cateringInfo->title ?? 'Servicio de Catering Walpa' }}</h1>
+                            <h1 class="hero-title">{{ $cateringInfo->title ?? 'Servicio de Ventas Corporativas WalpaChicken' }}</h1>
                             <h2 class="hero-subtitle">El sabor <span class="highlight">INCOMPARABLE.</span> disfruta</h2>
                             <div class="rating-container">
                                 <div class="stars">★ ★ ★ ★ ★</div>
@@ -354,6 +354,8 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
     position: relative;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .catering-page::before {
@@ -365,6 +367,23 @@
     bottom: 0;
     background: transparent;
     pointer-events: none;
+}
+
+/* Contenedor para prevenir desbordamiento */
+.catering-page .container {
+    max-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.catering-page .row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.catering-page [class*="col-"] {
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 /* Hero Banner rediseñado */
@@ -466,6 +485,8 @@
     overflow: hidden;
     box-shadow: var(--shadow-hover);
     transition: all 0.3s ease;
+    max-width: 100%;
+    width: 100%;
 }
 
 .image-frame:hover {
@@ -475,10 +496,11 @@
 
 .hero-img {
     width: 100%;
-    height: auto;
+    height: 600px;
     display: block;
     border-radius: 20px;
     border: 5px solid var(--walpa-gold);
+    object-fit: cover;
 }
 
 .image-overlay {
@@ -547,7 +569,7 @@
 }
 
 .nav-btn {
-    background-color: #778089;
+    background-color: #d03336;
     color: white;
     border: none;
     padding: 8px 16px;
@@ -561,10 +583,10 @@
 
 .nav-btn:hover,
 .nav-btn.active {
-    background: #fec601;
-    color: #210303;
+    background: #d03336;
+    color: white;
     transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(254,198,1,0.4);
+    box-shadow: 0 4px 15px rgba(208, 51, 54, 0.4);
 }
 
 /* Sección de descripción rediseñada */
@@ -1041,27 +1063,53 @@
     font-weight: 700;
 }
 
-/* Responsive */
+/* Responsive mejorado */
+@media (max-width: 992px) {
+    .packages-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
 @media (max-width: 768px) {
+    .catering-page {
+        overflow-x: hidden;
+    }
+    
     .page-title {
         font-size: 1.5rem;
+        padding-left: 0.75rem;
+        border-left-width: 3px;
     }
     
     .nav-buttons {
         flex-direction: column;
         gap: 0.5rem;
+        padding: 0 1rem;
     }
     
     .nav-btn {
         width: 100%;
         margin-bottom: 0.25rem;
         padding: 12px 16px;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.3;
     }
     
     .hero-banner {
         padding: 2rem 0;
+    }
+    
+    .hero-text {
         text-align: center;
+        margin-bottom: 2rem;
     }
     
     .hero-title {
@@ -1072,79 +1120,348 @@
         font-size: 1.8rem;
     }
     
-    .hero-image {
+    .rating-container {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .stars {
+        font-size: 1.5rem;
+    }
+    
+    .rating-text {
+        font-size: 0.8rem;
+    }
+    
+    .hero-image-container {
         margin-top: 2rem;
+    }
+    
+    .hero-img {
+        border-width: 3px;
     }
     
     .hero-description {
         padding: 2rem 0;
     }
     
-    .description-text {
-        font-size: 1rem;
-        text-align: left;
-    }
-    
-    .contact-info {
+    .card-body {
         padding: 1.5rem;
     }
     
-    .contact-item {
-        justify-content: flex-start;
+    .description-text {
+        font-size: 1rem;
+        text-align: center;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .contact-card {
+        padding: 1rem;
+    }
+    
+    .contact-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+    
+    .contact-label {
+        font-size: 0.8rem;
+    }
+    
+    .contact-value {
+        font-size: 1rem;
+    }
+    
+    .forms-container {
+        padding: 1.5rem 0;
+    }
+    
+    .packages-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .package-card-modern {
         margin-bottom: 1rem;
     }
     
-    .packages-row {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    .package-content {
+        padding: 1.5rem;
+        padding-top: 2.5rem;
     }
     
-    .package-card {
-        padding: 1.5rem;
+    .package-title {
+        font-size: 1.2rem;
+    }
+    
+    .package-description {
+        font-size: 0.95rem;
+        min-height: auto;
+    }
+    
+    .price-value {
+        font-size: 1.7rem;
+    }
+    
+    .btn-package-modern {
+        padding: 12px 20px;
+        font-size: 1rem;
     }
     
     .clients-content {
         flex-direction: column;
+        align-items: center;
         gap: 1.5rem;
+    }
+    
+    .client-item {
+        width: 100%;
+        max-width: 300px;
+        padding: 1.5rem;
     }
     
     .catering-form,
     .reservation-form {
-        padding: 1rem;
+        padding: 1.5rem;
     }
     
     .reservation-section {
         padding: 1.5rem;
+        margin-top: 1.5rem;
+    }
+    
+    .reservation-header h3 {
+        font-size: 1.1rem;
+    }
+    
+    .promo-image {
+        margin-top: 2rem;
     }
 }
 
 @media (max-width: 576px) {
+    .catering-header {
+        padding: 1.5rem 0 1rem;
+    }
+    
+    .page-title {
+        font-size: 1.3rem;
+    }
+    
+    .nav-buttons {
+        padding: 0 0.5rem;
+    }
+    
+    .nav-btn {
+        font-size: 0.8rem;
+        padding: 10px 12px;
+    }
+    
+    .hero-banner {
+        padding: 1.5rem 0;
+    }
+    
+    .service-badge {
+        font-size: 0.8rem;
+        padding: 6px 15px;
+    }
+    
     .hero-title {
         font-size: 1.3rem;
     }
     
     .hero-subtitle {
         font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .stars {
+        font-size: 1.3rem;
+    }
+    
+    .rating-text {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+    }
+    
+    .hero-description {
+        padding: 1.5rem 0;
+    }
+    
+    .card-header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .card-header h3 {
+        font-size: 1.2rem;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    
+    .card-body {
+        padding: 1.5rem 1rem;
+    }
+    
+    .description-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .contact-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem 1rem;
+    }
+    
+    .contact-details {
+        align-items: center;
+    }
+    
+    .forms-container {
+        padding: 1rem 0;
+    }
+    
+    .packages-section {
+        margin-bottom: 2rem;
+    }
+    
+    .packages-header h3 {
+        font-size: 1.5rem;
+        flex-direction: column;
+    }
+    
+    .packages-header p {
+        font-size: 1rem;
+    }
+    
+    .packages-grid {
+        padding: 0 0.5rem;
+    }
+    
+    .package-badge-modern {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+        font-size: 0.7rem;
+    }
+    
+    .package-content {
+        padding: 1.2rem;
+        padding-top: 2.2rem;
+    }
+    
+    .package-title {
+        font-size: 1.1rem;
+    }
+    
+    .package-range {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+    }
+    
+    .package-description {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    .package-price {
+        padding: 0.8rem;
+    }
+    
+    .price-label {
+        font-size: 0.85rem;
+    }
+    
+    .price-value {
+        font-size: 1.5rem;
+    }
+    
+    .price-unit {
+        font-size: 0.85rem;
+    }
+    
+    .package-actions {
+        padding: 0 1.2rem 1.2rem;
+    }
+    
+    .btn-package-modern {
+        padding: 12px 15px;
+        font-size: 0.9rem;
     }
     
     .form-title {
         font-size: 1.3rem;
     }
     
+    .reservation-title {
+        font-size: 1.1rem;
+    }
+    
     .reservation-section {
         padding: 1rem;
     }
     
-    .package-card {
-        padding: 1rem;
+    .reservation-header h3 {
+        font-size: 1rem;
+        padding: 6px 15px;
     }
     
-    .contact-info {
-        padding: 1rem;
+    .catering-form,
+    .reservation-form {
+        padding: 1.2rem;
     }
     
-    .hero-description {
-        padding: 1.5rem 0;
+    .form-group {
+        margin-bottom: 0.8rem;
+    }
+    
+    .form-group label {
+        font-size: 0.85rem;
+    }
+    
+    .form-control {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+    
+    .btn-submit {
+        padding: 10px 15px;
+        font-size: 0.85rem;
+    }
+    
+    .clients-section {
+        padding: 2rem 0;
+    }
+    
+    .clients-header {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .clients-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .client-item {
+        padding: 1.2rem;
+    }
+    
+    .client-logo img {
+        max-width: 80px;
+    }
+    
+    .client-item h5 {
+        font-size: 1rem;
+    }
+    
+    .promo-image {
+        margin-top: 1.5rem;
     }
 }
 </style>

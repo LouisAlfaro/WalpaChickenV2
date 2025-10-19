@@ -14,70 +14,68 @@
             <div class="row g-4">
                 @foreach($promotions as $promotion)
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="promotion-card h-100">
-                            @if($promotion->link)
-                                <a href="{{ $promotion->link }}" target="_blank" class="text-decoration-none">
-                            @endif
-                            
-                            <div class="card h-100 shadow-sm border-0 promotion-item">
-                                <!-- Imagen -->
-                                <div class="promotion-image-container">
-                                    @if($promotion->image)
-                                        <img src="{{ asset('storage/promotions/' . $promotion->image) }}" 
-                                             class="card-img-top promotion-image" 
-                                             alt="{{ $promotion->title }}">
-                                    @else
-                                        <div class="placeholder-image d-flex align-items-center justify-content-center">
-                                            <i class="fas fa-image fa-3x text-muted"></i>
-                                        </div>
-                                    @endif
-
-                                    <!-- Overlay con hover effect -->
-                                    <div class="promotion-overlay">
-                                        <div class="overlay-content">
-                                            @if($promotion->link)
-                                                <i class="fas fa-external-link-alt fa-2x text-white"></i>
-                                                <p class="text-white mt-2 mb-0">Ver más</p>
-                                            @else
-                                                <i class="fas fa-eye fa-2x text-white"></i>
-                                                <p class="text-white mt-2 mb-0">Ver detalles</p>
-                                            @endif
-                                        </div>
+                        @if($promotion->link)
+                            <a href="{{ $promotion->link }}" target="_blank" class="text-decoration-none">
+                        @endif
+                        
+                        <div class="promotion-item">
+                            <!-- Imagen -->
+                            <div class="promotion-image-container">
+                                @if($promotion->image)
+                                    <img src="{{ asset('storage/promotions/' . $promotion->image) }}" 
+                                         class="promotion-image" 
+                                         alt="{{ $promotion->title }}">
+                                @else
+                                    <div class="placeholder-image d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-image fa-3x text-muted"></i>
                                     </div>
-                                </div>
+                                @endif
 
-                                <!-- Contenido de la tarjeta -->
-                                <div class="card-body d-flex flex-column">
-                                    <h5 class="card-title text-walpa fw-bold">{{ $promotion->title }}</h5>
-                                    
-                                    @if($promotion->description)
-                                        <p class="card-text text-muted flex-grow-1">
-                                            {{ $promotion->description }}
-                                        </p>
-                                    @endif
-
-                                    <!-- Fechas de vigencia -->
-                                    @if($promotion->start_date || $promotion->end_date)
-                                        <div class="promotion-dates mt-auto pt-3">
-                                            <small class="text-muted">
-                                                <i class="fas fa-calendar-alt me-1"></i>
-                                                @if($promotion->start_date && $promotion->end_date)
-                                                    Válido del {{ $promotion->start_date->format('d/m/Y') }} al {{ $promotion->end_date->format('d/m/Y') }}
-                                                @elseif($promotion->start_date)
-                                                    Válido desde {{ $promotion->start_date->format('d/m/Y') }}
-                                                @elseif($promotion->end_date)
-                                                    Válido hasta {{ $promotion->end_date->format('d/m/Y') }}
-                                                @endif
-                                            </small>
-                                        </div>
-                                    @endif
+                                <!-- Overlay con hover effect -->
+                                <div class="promotion-overlay">
+                                    <div class="overlay-content">
+                                        @if($promotion->link)
+                                            <i class="fas fa-external-link-alt fa-2x text-white"></i>
+                                            <p class="text-white mt-2 mb-0">Ver más</p>
+                                        @else
+                                            <i class="fas fa-eye fa-2x text-white"></i>
+                                            <p class="text-white mt-2 mb-0">Ver detalles</p>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
 
-                            @if($promotion->link)
-                                </a>
-                            @endif
+                            <!-- Contenido de la tarjeta -->
+                            <div class="promotion-content">
+                                <h5 class="promotion-title">{{ $promotion->title }}</h5>
+                                
+                                @if($promotion->description)
+                                    <p class="promotion-description">
+                                        {{ $promotion->description }}
+                                    </p>
+                                @endif
+
+                                <!-- Fechas de vigencia -->
+                                @if($promotion->start_date || $promotion->end_date)
+                                    <div class="promotion-dates">
+                                        <small>
+                                            <i class="fas fa-calendar-alt me-1"></i>
+                                            @if($promotion->start_date && $promotion->end_date)
+                                                Válido del {{ $promotion->start_date->format('d/m/Y') }} al {{ $promotion->end_date->format('d/m/Y') }}
+                                            @elseif($promotion->start_date)
+                                                Válido desde {{ $promotion->start_date->format('d/m/Y') }}
+                                            @elseif($promotion->end_date)
+                                                Válido hasta {{ $promotion->end_date->format('d/m/Y') }}
+                                            @endif
+                                        </small>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
+
+                        @if($promotion->link)
+                            </a>
+                        @endif
                     </div>
                 @endforeach
             </div>
@@ -161,8 +159,8 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 50px;
-    background: linear-gradient(45deg, transparent 50%, #fec601 50%);
+    height: 0;
+    background: transparent;
 }
 
 .text-walpa {
@@ -200,32 +198,26 @@
     transform: translateY(-2px);
 }
 
-.promotion-card {
-    transition: transform 0.3s ease;
-}
-
-.promotion-card:hover {
-    transform: translateY(-5px);
-}
-
 .promotion-item {
-    border-radius: 15px;
-    overflow: hidden;
+    border-radius: 0 !important;
+    overflow: visible;
     transition: all 0.3s ease;
     cursor: pointer;
-    background: white;
-    border: 3px solid transparent;
+    background: transparent;
+    border: none;
+    box-shadow: none;
 }
 
 .promotion-item:hover {
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-    border-color: #210303;
+    transform: translateY(-5px);
 }
 
 .promotion-image-container {
     position: relative;
-    height: 300px;
+    height: 450px;
     overflow: hidden;
+    border: 3px solid #210303;
+    background: #fff;
 }
 
 .promotion-image {
@@ -237,6 +229,27 @@
 
 .promotion-item:hover .promotion-image {
     transform: scale(1.05);
+}
+
+.promotion-content {
+    padding: 1.5rem;
+    background: white;
+    border: 3px solid #210303;
+    border-top: none;
+}
+
+.promotion-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-weight: 900;
+    color: #210303;
+}
+
+.promotion-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #210303;
+    margin-bottom: 1rem;
 }
 
 .placeholder-image {
@@ -280,17 +293,19 @@
 }
 
 .promotion-dates {
-    border-top: 1px solid #eee;
+    border: none;
     background: #fec601;
     color: #210303;
-    margin: 0 -1.25rem -1.25rem;
-    padding: 0.75rem 1.25rem;
-    font-weight: 600;
+    margin: 0 -1.5rem -1.5rem -1.5rem;
+    padding: 1rem 1.5rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-top: 3px solid #210303;
 }
 
 .cta-section {
     background: #210303;
-    border-radius: 15px;
+    border-radius: 0 !important;
     border: 3px solid #fec601;
     padding: 3rem;
 }
