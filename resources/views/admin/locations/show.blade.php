@@ -83,6 +83,21 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <th>Promociones PDF:</th>
+                                    <td>
+                                        @if($location->promotions_pdf)
+                                            <a href="{{ $location->promotions_pdf_url }}" 
+                                            target="_blank" 
+                                            class="btn btn-sm btn-success">
+                                                <i class="fas fa-percent"></i> Descargar/Ver PDF
+                                            </a>
+                                            <br><small class="text-muted">{{ $location->promotions_pdf }}</small>
+                                        @else
+                                            No disponible
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
                                     <th>Estado:</th>
                                     <td>
                                         @if($location->active)
@@ -123,10 +138,10 @@
                                 @endif
                             </div>
 
-                            @if($location->whatsapp_url || $location->maps_url)
+                            @if($location->whatsapp_url || $location->maps_url || $location->menu_pdf_url || $location->promotions_pdf_url)
                                 <div class="mt-4 text-center">
                                     <h6>Enlaces Rápidos:</h6>
-                                    <div class="d-flex justify-content-center gap-2">
+                                    <div class="d-flex justify-content-center gap-2 flex-wrap">
                                         @if($location->whatsapp_url)
                                             <a href="{{ $location->whatsapp_url }}" target="_blank" class="btn btn-success">
                                                 <i class="fab fa-whatsapp"></i> WhatsApp
@@ -135,6 +150,16 @@
                                         @if($location->maps_url)
                                             <a href="{{ $location->maps_url }}" target="_blank" class="btn btn-primary">
                                                 <i class="fas fa-map-marker-alt"></i> Google Maps
+                                            </a>
+                                        @endif
+                                        @if($location->menu_pdf_url)
+                                            <a href="{{ $location->menu_pdf_url }}" target="_blank" class="btn btn-danger">
+                                                <i class="fas fa-utensils"></i> Carta
+                                            </a>
+                                        @endif
+                                        @if($location->promotions_pdf_url)
+                                            <a href="{{ $location->promotions_pdf_url }}" target="_blank" class="btn btn-warning">
+                                                <i class="fas fa-percent"></i> Promociones
                                             </a>
                                         @endif
                                     </div>

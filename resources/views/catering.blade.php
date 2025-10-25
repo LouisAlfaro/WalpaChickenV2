@@ -159,25 +159,17 @@
 
                                 <div class="form-group">
                                     <label>Región <span class="required">*</span></label>
-                                    <select name="region" class="form-control" required>
-                                        <option value="">Seleccionar una región</option>
-                                        <option value="Lima">Lima</option>
-                                        <option value="Callao">Callao</option>
-                                    </select>
+                                    <input type="text" name="region" class="form-control" placeholder="Ej: Lima" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Provincia <span class="required">*</span></label>
-                                    <select name="province" class="form-control" required>
-                                        <option value="">Seleccionar una provincia</option>
-                                    </select>
+                                    <input type="text" name="province" class="form-control" placeholder="Ej: Lima" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Distrito <span class="required">*</span></label>
-                                    <select name="district" class="form-control" required>
-                                        <option value="">Seleccionar un distrito</option>
-                                    </select>
+                                    <input type="text" name="district" class="form-control" placeholder="Ej: San Juan de Lurigancho" required>
                                 </div>
 
                                 <div class="form-group">
@@ -238,11 +230,17 @@
                         </div>
                     @endif
 
-                    <!-- Formulario de reserva con imagen -->
+                    <!-- Formulario de reserva con la misma imagen del principal -->
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="reservation-form">
                                 <h4 class="reservation-title">Elige cuándo realizar TU reserva</h4>
+                                
+                                @if(session('success_reservation'))
+                                    <div class="alert alert-success mb-3">
+                                        {{ session('success_reservation') }}
+                                    </div>
+                                @endif
                                 
                                 <form action="{{ route('catering.reservation') }}" method="POST">
                                     @csrf
@@ -250,9 +248,7 @@
                                     
                                     <div class="form-group">
                                         <label>Sede <span class="required">*</span></label>
-                                        <select name="location" class="form-control" required>
-                                            <option value="">Seleccionar una sede</option>
-                                        </select>
+                                        <input type="text" name="location" class="form-control" placeholder="Ej: Walpa Chicken San Martín" required>
                                     </div>
 
                                     <div class="form-group">
@@ -262,9 +258,7 @@
 
                                     <div class="form-group">
                                         <label>Hora <span class="required">*</span></label>
-                                        <select name="event_time" class="form-control" required>
-                                            <option value="">Seleccionar una hora</option>
-                                        </select>
+                                        <input type="time" name="event_time" class="form-control" required>
                                     </div>
 
                                     <div class="form-group">
@@ -284,9 +278,7 @@
 
                                     <div class="form-group">
                                         <label>Motivo</label>
-                                        <select name="reason" class="form-control">
-                                            <option value="">Seleccionar un motivo</option>
-                                        </select>
+                                        <input type="text" name="reason" class="form-control" placeholder="Ej: Cumpleaños, Reunión familiar, etc.">
                                     </div>
 
                                     <div class="form-group">
@@ -299,8 +291,14 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="promo-image">
-                                <img src="{{ asset('images/walpa-promo.jpg') }}" alt="Promoción Walpa" class="img-fluid rounded">
+                            <div class="hero-image-container">
+                                <div class="image-frame">
+                                    @if($cateringInfo && $cateringInfo->main_image)
+                                        <img src="{{ $cateringInfo->main_image_url }}" alt="Catering Walpa" class="hero-img">
+                                    @else
+                                        <img src="{{ asset('images/catering-hero.jpg') }}" alt="Catering Walpa" class="hero-img">
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -324,7 +322,6 @@
                                 <img src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->name }}">
                             @endif
                         </div>
-                        <h5>{{ strtoupper($client->name) }}</h5>
                     </div>
                 @endforeach
             </div>
@@ -737,14 +734,53 @@
     border-radius: 10px;
     color: white;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    height: 100%;
 }
 
-.form-title {
+.form-title,
+.reservation-title {
     color: var(--walpa-yellow);
     text-align: center;
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
+}
+
+/* Imagen del formulario de reserva */
+.reservation-section .hero-image-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.reservation-section .image-frame {
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.reservation-section .hero-img {
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 5px solid #fec601;
+}
+
+.reservation-section .row {
+    align-items: stretch;
+}
+
+.reservation-section .col-lg-6 {
+    display: flex;
+}
+
+.reservation-section .reservation-form,
+.reservation-section .hero-image-container {
+    flex: 1;
 }
 
 .form-group {
@@ -1395,12 +1431,9 @@
         font-size: 0.9rem;
     }
     
-    .form-title {
-        font-size: 1.3rem;
-    }
-    
+    .form-title,
     .reservation-title {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
     }
     
     .reservation-section {

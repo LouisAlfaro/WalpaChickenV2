@@ -30,6 +30,7 @@ class LocationController extends Controller
             'maps_url' => 'nullable|url',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'menu_pdf' => 'nullable|file|mimes:pdf|max:10240',
+            'promotions_pdf' => 'nullable|file|mimes:pdf|max:10240',
             'order' => 'nullable|integer|min:0',
             'active' => 'nullable|boolean',
             'description' => 'nullable|string'
@@ -62,6 +63,18 @@ class LocationController extends Controller
         $data['menu_pdf'] = $pdfName;
         }
 
+        if ($request->hasFile('promotions_pdf')) {
+            $pdf = $request->file('promotions_pdf');
+            $pdfName = time() . '_promotions_' . $pdf->getClientOriginalName();
+            
+            if (!Storage::disk('public')->exists('locations/promotions')) {
+                Storage::disk('public')->makeDirectory('locations/promotions');
+            }
+            
+            $pdf->storeAs('locations/promotions', $pdfName, 'public');
+            $data['promotions_pdf'] = $pdfName;
+        }
+
         $data['order'] = $data['order'] ?? 0;
         $data['active'] = $data['active'] ?? true;
 
@@ -91,6 +104,7 @@ class LocationController extends Controller
             'maps_url' => 'nullable|url',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'menu_pdf' => 'nullable|file|mimes:pdf|max:10240',
+            'promotions_pdf' => 'nullable|file|mimes:pdf|max:10240',
             'order' => 'nullable|integer|min:0',
             'active' => 'nullable|boolean',
             'description' => 'nullable|string'
@@ -132,6 +146,23 @@ class LocationController extends Controller
         $data['menu_pdf'] = $pdfName;
         }
 
+        if ($request->hasFile('promotions_pdf')) {
+            // Eliminar PDF anterior
+            if ($location->promotions_pdf && Storage::disk('public')->exists('locations/promotions/' . $location->promotions_pdf)) {
+                Storage::disk('public')->delete('locations/promotions/' . $location->promotions_pdf);
+            }
+
+            $pdf = $request->file('promotions_pdf');
+            $pdfName = time() . '_promotions_' . $pdf->getClientOriginalName();
+            
+            if (!Storage::disk('public')->exists('locations/promotions')) {
+                Storage::disk('public')->makeDirectory('locations/promotions');
+            }
+            
+            $pdf->storeAs('locations/promotions', $pdfName, 'public');
+            $data['promotions_pdf'] = $pdfName;
+        }
+
         $data['order'] = $data['order'] ?? 0;
         $data['active'] = $data['active'] ?? true;
 
@@ -149,6 +180,10 @@ class LocationController extends Controller
 
         if ($location->menu_pdf && Storage::disk('public')->exists('locations/menus/' . $location->menu_pdf)) {
         Storage::disk('public')->delete('locations/menus/' . $location->menu_pdf);
+        }
+
+        if ($location->promotions_pdf && Storage::disk('public')->exists('locations/promotions/' . $location->promotions_pdf)) {
+            Storage::disk('public')->delete('locations/promotions/' . $location->promotions_pdf);
         }
 
         $location->delete();

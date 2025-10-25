@@ -2194,10 +2194,10 @@ section,
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('menu') }}">NUESTRA CARTA</a>
+                        <a class="nav-link" href="{{ route('locations') }}">NUESTRA CARTA</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('promotions') }}">PROMOCIONES</a>
+                        <a class="nav-link" href="{{ route('locations') }}">PROMOCIONES</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('catering') }}">CORPORATIVOS</a>
@@ -2280,7 +2280,7 @@ section,
                 <ul class="list-unstyled">
                     <li><a href="{{ url('/oportunidades#comercial') }}">Hagamos negocios</a></li>
                     <li><a href="{{ url('/oportunidades#proveedores') }}">Sé proveedor</a></li>
-                    <li><a href="{{ url('/oportunidades#trabajo') }}">Trabaja con nosotros</a></li>
+                    <li><a href="{{ url('/oportunidades#comercial') }}">Trabaja con nosotros</a></li>
                 </ul>
             </div>
             @php $contact = \App\Models\ContactInfo::first(); @endphp

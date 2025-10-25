@@ -17,7 +17,6 @@
                     <div class="col-lg-6 mb-2">
                         <div class="company-section h-100">
                             <div class="section-header">
-                                <span class="section-badge">{{ strtoupper($mission->type) }}</span>
                                 <h2 class="section-title">{{ $mission->title }}</h2>
                             </div>
                             
@@ -41,7 +40,6 @@
                     <div class="col-lg-6 mb-2">
                         <div class="company-section h-100">
                             <div class="section-header">
-                                <span class="section-badge">{{ strtoupper($values->type) }}</span>
                                 <h2 class="section-title">{{ $values->title }}</h2>
                             </div>
                             
@@ -81,7 +79,6 @@
                         <div class="row align-items-center">
                             <div class="col-lg-8">
                                 <div class="section-header">
-                                    <span class="section-badge">{{ strtoupper($vision->type) }}</span>
                                     <h2 class="section-title">{{ $vision->title }}</h2>
                                 </div>
                                 <div class="section-content">
@@ -111,7 +108,6 @@
                     <div class="col-lg-6 mb-4">
                         <div class="company-section h-100">
                             <div class="section-header">
-                                <span class="section-badge">{{ strtoupper($history->type) }}</span>
                                 <h2 class="section-title">{{ $history->title }}</h2>
                             </div>
                             
@@ -146,7 +142,6 @@
                     <div class="col-lg-6 mb-4">
                         <div class="company-section h-100">
                             <div class="section-header">
-                                <span class="section-badge">{{ strtoupper($objectives->type) }}</span>
                                 <h2 class="section-title">{{ $objectives->title }}</h2>
                             </div>
                             
@@ -184,7 +179,6 @@
                 <div class="col-12">
                     <div class="company-section team-section">
                         <div class="section-header text-center">
-                            <span class="section-badge">{{ strtoupper($team->type) }}</span>
                             <h2 class="section-title">{{ $team->title }}</h2>
                         </div>
                         
@@ -226,7 +220,6 @@
                 <div class="col-12">
                     <div class="company-section">
                         <div class="section-header">
-                            <span class="section-badge">{{ strtoupper($section->type) }}</span>
                             <h2 class="section-title">{{ $section->title }}</h2>
                         </div>
                         

@@ -69,10 +69,14 @@
                                 </a>
                             @endif
 
-                            <a href="#" class="action-btn promotions-btn">
-                                <i class="fas fa-percent"></i>
-                                <span>Ver Promociones</span>
-                            </a>
+                            @if($location->promotions_pdf_url)
+                                <a href="{{ $location->promotions_pdf_url }}" 
+                                   target="_blank" 
+                                   class="action-btn promotions-btn">
+                                    <i class="fas fa-percent"></i>
+                                    <span>Ver Promociones</span>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>

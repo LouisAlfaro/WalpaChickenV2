@@ -17,6 +17,7 @@ class Location extends Model
         'maps_url',
         'image',
         'menu_pdf',
+        'promotions_pdf',
         'order',
         'active',
         'description'
@@ -52,6 +53,14 @@ class Location extends Model
     {
         if ($this->menu_pdf) {
             return asset('storage/locations/menus/' . $this->menu_pdf);
+        }
+        return null;
+    }
+
+    public function getPromotionsPdfUrlAttribute()
+    {
+        if ($this->promotions_pdf) {
+            return asset('storage/locations/promotions/' . $this->promotions_pdf);
         }
         return null;
     }

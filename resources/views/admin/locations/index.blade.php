@@ -32,6 +32,7 @@
                                         <th>Dirección</th>
                                         <th>Teléfono</th>
                                         <th>Carta PDF</th>
+                                        <th>Promociones PDF</th>
                                         <th>Orden</th>
                                         <th>Estado</th>
                                         <th>Acciones</th>
@@ -61,7 +62,18 @@
                                                     <a href="{{ $location->menu_pdf_url }}" 
                                                     target="_blank" 
                                                     class="btn btn-sm btn-outline-danger">
-                                                        <i class="fas fa-file-pdf"></i>
+                                                        <i class="fas fa-file-pdf"></i> Carta
+                                                    </a>
+                                                @else
+                                                    <span class="text-muted">Sin PDF</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if($location->promotions_pdf)
+                                                    <a href="{{ $location->promotions_pdf_url }}" 
+                                                    target="_blank" 
+                                                    class="btn btn-sm btn-outline-success">
+                                                        <i class="fas fa-percent"></i> Promos
                                                     </a>
                                                 @else
                                                     <span class="text-muted">Sin PDF</span>

@@ -282,11 +282,18 @@
                         @if(!empty($contents['trabajo']->image))
                             <img src="{{ asset('storage/opportunities/' . $contents['trabajo']->image) }}" 
                                 alt="{{ $contents['trabajo']->title ?? 'Equipo Walpa' }}" 
-                                class="img-fluid rounded-4 shadow-lg opportunity-hero-img">
+                                class="img-fluid rounded-4 shadow-lg opportunity-hero-img"
+                                id="opportunityImage"
+                                data-default="{{ asset('storage/opportunities/' . $contents['trabajo']->image) }}"
+                                data-comercial="{{ !empty($contents['comercial']->image) ? asset('storage/opportunities/' . $contents['comercial']->image) : asset('storage/opportunities/' . $contents['trabajo']->image) }}"
+                                data-proveedores="{{ !empty($contents['proveedores']->image) ? asset('storage/opportunities/' . $contents['proveedores']->image) : asset('storage/opportunities/' . $contents['trabajo']->image) }}"
+                                data-trabajo="{{ asset('storage/opportunities/' . $contents['trabajo']->image) }}">
                         @else
                             <img src="{{ asset('images/opportunities-hero.jpg') }}" 
                                 alt="Oportunidades Walpa" 
-                                class="img-fluid rounded-4 shadow-lg opportunity-hero-img">
+                                class="img-fluid rounded-4 shadow-lg opportunity-hero-img"
+                                id="opportunityImage"
+                                data-default="{{ asset('images/opportunities-hero.jpg') }}">
                         @endif
                     </div>
                 </div>
@@ -306,7 +313,7 @@
             <div class="row g-4">
                 <!-- Comercial -->
                 <div class="col-lg-4" id="comercial">
-                    <div class="opportunity-card commercial-card h-100">
+                    <div class="opportunity-card commercial-card h-100" data-opportunity="comercial">
                         <div class="card-header-icon">
                             <div class="card-icon commercial-icon">
                                 <i class="fas fa-handshake"></i>
@@ -345,7 +352,7 @@
 
                 <!-- Proveedores -->
                 <div class="col-lg-4">
-                    <div class="opportunity-card provider-card h-100">
+                    <div class="opportunity-card provider-card h-100" data-opportunity="proveedores">
                         <div class="card-header-icon">
                             <div class="card-icon provider-icon">
                                 <i class="fas fa-truck"></i>
@@ -384,7 +391,7 @@
 
                 <!-- Trabajo -->
                 <div class="col-lg-4" id="trabajo">
-                    <div class="opportunity-card job-card h-100 featured">
+                    <div class="opportunity-card job-card h-100 featured" data-opportunity="trabajo">
                         <div class="featured-ribbon"></div>
                         <div class="card-header-icon">
                             <div class="card-icon job-icon">
@@ -882,6 +889,16 @@
     box-shadow: 0 25px 50px var(--shadow-medium);
 }
 
+.opportunity-card.active-card {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(254,198,1,0.4);
+    border: 3px solid #fec601;
+}
+
+.opportunity-card {
+    cursor: pointer;
+}
+
 .opportunity-card.featured {
     border: 3px solid var(--job-color);
     box-shadow: 0 10px 30px rgba(111,66,193,0.2);
@@ -1297,9 +1314,100 @@
 </style>
 @endpush
 
-@push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Cambio de imagen al hacer clic en las tarjetas
+    const opportunityImage = document.getElementById('opportunityImage');
+    const opportunityCards = document.querySelectorAll('.opportunity-card[data-opportunity]');
+    
+    console.log('Image element:', opportunityImage);
+    console.log('Cards found:', opportunityCards.length);
+    
+    if (opportunityImage && opportunityCards.length > 0) {
+        // Mostrar los data attributes disponibles
+        console.log('Data comercial:', opportunityImage.getAttribute('data-comercial'));
+        console.log('Data proveedores:', opportunityImage.getAttribute('data-proveedores'));
+        console.log('Data trabajo:', opportunityImage.getAttribute('data-trabajo'));
+        
+        opportunityCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                // No cambiar imagen si se clickea el botón del modal
+                if (e.target.closest('[data-bs-toggle="modal"]')) {
+                    console.log('Click en botón del modal, no cambiar imagen');
+                    return;
+                }
+                
+                const opportunityType = this.getAttribute('data-opportunity');
+                const newImageSrc = opportunityImage.getAttribute('data-' + opportunityType);
+                
+                console.log('Click en:', opportunityType);
+                console.log('Nueva imagen URL:', newImageSrc);
+                console.log('Imagen actual:', opportunityImage.src);
+                
+                if (newImageSrc && newImageSrc !== opportunityImage.src) {
+                    // Agregar efecto de transición
+                    opportunityImage.style.opacity = '0';
+                    opportunityImage.style.transform = 'scale(0.95)';
+                    
+                    setTimeout(() => {
+                        opportunityImage.src = newImageSrc;
+                        opportunityImage.style.opacity = '1';
+                        opportunityImage.style.transform = 'scale(1)';
+                        console.log('Imagen cambiada a:', newImageSrc);
+                    }, 300);
+                } else {
+                    console.log('No se cambia: misma imagen o URL vacía');
+                }
+                
+                // Efecto visual en la tarjeta clickeada
+                opportunityCards.forEach(c => c.classList.remove('active-card'));
+                this.classList.add('active-card');
+            });
+            
+            // También cambiar imagen al pasar el mouse
+            card.addEventListener('mouseenter', function() {
+                const opportunityType = this.getAttribute('data-opportunity');
+                const newImageSrc = opportunityImage.getAttribute('data-' + opportunityType);
+                
+                console.log('Hover en:', opportunityType);
+                
+                if (newImageSrc && newImageSrc !== opportunityImage.src) {
+                    opportunityImage.style.opacity = '0.7';
+                    opportunityImage.style.transform = 'scale(0.98)';
+                    
+                    setTimeout(() => {
+                        opportunityImage.src = newImageSrc;
+                        opportunityImage.style.opacity = '1';
+                        opportunityImage.style.transform = 'scale(1)';
+                    }, 200);
+                }
+            });
+        });
+        
+        // Restaurar imagen por defecto cuando el mouse sale de todas las tarjetas
+        const cardsContainer = document.querySelector('.opportunities-section .row.g-4');
+        if (cardsContainer) {
+            cardsContainer.addEventListener('mouseleave', function() {
+                const defaultImage = opportunityImage.getAttribute('data-default');
+                if (defaultImage && !document.querySelector('.opportunity-card.active-card')) {
+                    opportunityImage.style.opacity = '0.7';
+                    opportunityImage.style.transform = 'scale(0.98)';
+                    
+                    setTimeout(() => {
+                        opportunityImage.src = defaultImage;
+                        opportunityImage.style.opacity = '1';
+                        opportunityImage.style.transform = 'scale(1)';
+                    }, 200);
+                }
+            });
+        }
+        
+        // Agregar transición CSS a la imagen
+        opportunityImage.style.transition = 'all 0.3s ease';
+    } else {
+        console.error('No se encontró la imagen o las tarjetas');
+    }
+    
     // Smooth scroll para anchors
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -1365,5 +1473,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
-@endpush
 @endsection

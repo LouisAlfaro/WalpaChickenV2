@@ -183,6 +183,35 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+
+                        @if($location->promotions_pdf)
+                            <div class="mb-3">
+                                <label class="form-label">Promociones PDF actual:</label>
+                                <div class="d-flex align-items-center gap-3">
+                                    <a href="{{ $location->promotions_pdf_url }}" 
+                                    target="_blank" 
+                                    class="btn btn-outline-danger">
+                                        <i class="fas fa-file-pdf"></i> Ver PDF Actual
+                                    </a>
+                                    <span class="text-muted">{{ $location->promotions_pdf }}</span>
+                                </div>
+                            </div>
+                        @endif
+
+                        <!-- Nuevo PDF de Promociones -->
+                        <div class="mb-3">
+                            <label for="promotions_pdf" class="form-label">{{ $location->promotions_pdf ? 'Cambiar Promociones PDF' : 'Promociones PDF' }}</label>
+                            <input type="file" 
+                                class="form-control @error('promotions_pdf') is-invalid @enderror" 
+                                id="promotions_pdf" 
+                                name="promotions_pdf" 
+                                accept="application/pdf">
+                            <div class="form-text">Archivo PDF de promociones del local. Tamaño máximo: 10MB</div>
+                            @error('promotions_pdf')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                         <!-- Estado -->
                         <div class="mb-3">
                             <div class="form-check">
