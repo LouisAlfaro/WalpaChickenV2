@@ -31,12 +31,15 @@ class LocationController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'menu_pdf' => 'nullable|file|mimes:pdf|max:10240',
             'promotions_pdf' => 'nullable|file|mimes:pdf|max:10240',
+            'pedidosya_url' => 'nullable|url',
+            'didifood_url' => 'nullable|url',
+            'rappi_url' => 'nullable|url',
             'order' => 'nullable|integer|min:0',
             'active' => 'nullable|boolean',
             'description' => 'nullable|string'
         ]);
 
-        $data = $request->only(['name', 'address', 'phone', 'whatsapp_url', 'maps_url', 'order', 'active', 'description']);
+        $data = $request->only(['name', 'address', 'phone', 'whatsapp_url', 'maps_url', 'pedidosya_url', 'didifood_url', 'rappi_url', 'order', 'active', 'description']);
         
         // Manejar la subida de imagen
         if ($request->hasFile('image')) {
@@ -105,12 +108,15 @@ class LocationController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'menu_pdf' => 'nullable|file|mimes:pdf|max:10240',
             'promotions_pdf' => 'nullable|file|mimes:pdf|max:10240',
+            'pedidosya_url' => 'nullable|url',
+            'didifood_url' => 'nullable|url',
+            'rappi_url' => 'nullable|url',
             'order' => 'nullable|integer|min:0',
             'active' => 'nullable|boolean',
             'description' => 'nullable|string'
         ]);
 
-        $data = $request->only(['name', 'address', 'phone', 'whatsapp_url', 'maps_url', 'order', 'active', 'description']);
+        $data = $request->only(['name', 'address', 'phone', 'whatsapp_url', 'maps_url', 'pedidosya_url', 'didifood_url', 'rappi_url', 'order', 'active', 'description']);
 
         if ($request->hasFile('image')) {
             // Eliminar imagen anterior si existe

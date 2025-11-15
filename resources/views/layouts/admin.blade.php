@@ -349,6 +349,11 @@
                 <i class="fas fa-motorcycle"></i>
                 Pedir Online
             </a>
+            <a href="{{ route('admin.complaint-books.index') }}" 
+                class="nav-link {{ request()->routeIs('admin.complaint-books.*') ? 'active' : '' }}">
+                <i class="fas fa-book"></i>
+                Libro de Reclamaciones
+            </a>
             <a href="{{ route('home') }}" class="nav-link" target="_blank">
                 <i class="fas fa-external-link-alt"></i>
                 Ver Sitio Web

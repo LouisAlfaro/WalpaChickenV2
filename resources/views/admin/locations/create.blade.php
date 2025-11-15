@@ -107,6 +107,55 @@
                             @enderror
                         </div>
 
+                        <!-- URLs de Plataformas de Delivery -->
+                        <div class="row">
+                            <div class="col-12">
+                                <h5 class="mb-3">Plataformas de Delivery</h5>
+                            </div>
+                            
+                            <!-- PedidosYa -->
+                            <div class="col-md-4 mb-3">
+                                <label for="pedidosya_url" class="form-label">URL de PedidosYa</label>
+                                <input type="url" 
+                                       class="form-control @error('pedidosya_url') is-invalid @enderror" 
+                                       id="pedidosya_url" 
+                                       name="pedidosya_url" 
+                                       value="{{ old('pedidosya_url') }}" 
+                                       placeholder="https://www.pedidosya.com.pe/...">
+                                @error('pedidosya_url')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <!-- Didi Food -->
+                            <div class="col-md-4 mb-3">
+                                <label for="didifood_url" class="form-label">URL de Didi Food</label>
+                                <input type="url" 
+                                       class="form-control @error('didifood_url') is-invalid @enderror" 
+                                       id="didifood_url" 
+                                       name="didifood_url" 
+                                       value="{{ old('didifood_url') }}" 
+                                       placeholder="https://www.didifood.com/...">
+                                @error('didifood_url')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <!-- Rappi -->
+                            <div class="col-md-4 mb-3">
+                                <label for="rappi_url" class="form-label">URL de Rappi</label>
+                                <input type="url" 
+                                       class="form-control @error('rappi_url') is-invalid @enderror" 
+                                       id="rappi_url" 
+                                       name="rappi_url" 
+                                       value="{{ old('rappi_url') }}" 
+                                       placeholder="https://www.rappi.com.pe/...">
+                                @error('rappi_url')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
                         <!-- Descripción -->
                         <div class="mb-3">
                             <label for="description" class="form-label">Descripción</label>

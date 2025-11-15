@@ -21,6 +21,8 @@ use App\Http\Controllers\Admin\ContactInfoController;
 use App\Http\Controllers\PopupController;
 use App\Http\Controllers\Admin\PromotionalPopupController;
 use App\Http\Controllers\Admin\DeliveryPlatformController;
+use App\Http\Controllers\ComplaintBookController;
+use App\Http\Controllers\Admin\ComplaintBookController as AdminComplaintBookController;
 
 
 
@@ -39,6 +41,10 @@ Route::prefix('oportunidades')->name('opportunities.')->group(function () {
     Route::post('/{type}/apply', [OpportunityFrontendController::class, 'apply'])->name('apply');
 });
 Route::get('/api/popup/active', [PopupController::class, 'getActivePopup']);
+
+// Libro de Reclamaciones
+Route::post('/complaint-book', [ComplaintBookController::class, 'store'])->name('complaint-book.store');
+
 // Rutas de autenticación existentes de Laravel
 Auth::routes();
 
@@ -137,4 +143,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::put('/social-widget', [App\Http\Controllers\Admin\SocialWidgetController::class, 'update'])->name('social-widget.update');
     Route::resource('delivery-platforms', DeliveryPlatformController::class);
     Route::patch('delivery-platforms/{deliveryPlatform}/toggle', [DeliveryPlatformController::class, 'toggle'])->name('delivery-platforms.toggle');
+    
+    // Libro de Reclamaciones
+    Route::resource('complaint-books', AdminComplaintBookController::class)->except(['create', 'store']);
+    Route::get('complaint-books/export', [AdminComplaintBookController::class, 'export'])->name('complaint-books.export');
 });

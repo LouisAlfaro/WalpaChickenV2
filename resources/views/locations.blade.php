@@ -78,6 +78,64 @@
                                 </a>
                             @endif
                         </div>
+
+                        <!-- Plataformas de Delivery -->
+                        @if($location->pedidosya_url || $location->didifood_url || $location->rappi_url)
+                            <div class="delivery-platforms">
+                                <h6 class="delivery-title">
+                                    <i class="fas fa-motorcycle"></i> Pídelo en:
+                                </h6>
+                                <div class="platforms-grid">
+                                    @if($location->pedidosya_url)
+                                        <a href="{{ $location->pedidosya_url }}" 
+                                           target="_blank" 
+                                           class="platform-btn pedidosya-btn"
+                                           title="Pedir en PedidosYa">
+                                            <div class="platform-icon pedidosya-icon">
+                                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="50" cy="50" r="45" fill="#FA0050"/>
+                                                    <path d="M30 35 L50 35 L70 35 L65 55 L50 55 L45 65 L35 65 Z" fill="white"/>
+                                                    <circle cx="55" cy="70" r="8" fill="white"/>
+                                                </svg>
+                                            </div>
+                                            <span>PedidosYa</span>
+                                        </a>
+                                    @endif
+
+                                    @if($location->didifood_url)
+                                        <a href="{{ $location->didifood_url }}" 
+                                           target="_blank" 
+                                           class="platform-btn didifood-btn"
+                                           title="Pedir en Didi Food">
+                                            <div class="platform-icon didifood-icon">
+                                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="50" cy="50" r="45" fill="#FF7F00"/>
+                                                    <path d="M35 40 Q35 30 45 30 L55 30 Q65 30 65 40 L65 60 Q65 70 55 70 L45 70 Q35 70 35 60 Z" fill="white"/>
+                                                    <circle cx="42" cy="45" r="4" fill="#FF7F00"/>
+                                                    <circle cx="58" cy="45" r="4" fill="#FF7F00"/>
+                                                </svg>
+                                            </div>
+                                            <span>Didi Food</span>
+                                        </a>
+                                    @endif
+
+                                    @if($location->rappi_url)
+                                        <a href="{{ $location->rappi_url }}" 
+                                           target="_blank" 
+                                           class="platform-btn rappi-btn"
+                                           title="Pedir en Rappi">
+                                            <div class="platform-icon rappi-icon">
+                                                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="50" cy="50" r="45" fill="#FF441F"/>
+                                                    <path d="M35 45 L45 35 L55 45 L65 35 L65 55 L55 65 L45 55 L35 65 Z" fill="white"/>
+                                                </svg>
+                                            </div>
+                                            <span>Rappi</span>
+                                        </a>
+                                    @endif
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             @endforeach
@@ -408,6 +466,146 @@
     color: white;
 }
 
+/* Plataformas de Delivery */
+.delivery-platforms {
+    margin-top: 25px;
+    padding: 20px;
+    background: linear-gradient(135deg, #fff9e6, #ffffff);
+    border-radius: 15px;
+    border: 2px dashed #fec601;
+    box-shadow: inset 0 2px 10px rgba(254,198,1,0.1);
+}
+
+.delivery-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #210303;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.delivery-title i {
+    color: #fec601;
+    font-size: 1.2rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-8px);
+    }
+    60% {
+        transform: translateY(-4px);
+    }
+}
+
+.platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 12px;
+}
+
+.platform-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 10px;
+    background: white;
+    border: 3px solid transparent;
+    border-radius: 15px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.platform-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, currentColor, transparent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.platform-btn:hover::after {
+    transform: scaleX(1);
+}
+
+.platform-icon {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 8px;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+}
+
+.platform-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.platform-btn span {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #2c1810;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    transition: color 0.3s ease;
+}
+
+.platform-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.platform-btn:hover .platform-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.pedidosya-btn:hover {
+    border-color: #FA0050;
+    background: linear-gradient(135deg, #fff, #ffe6f0);
+    color: #FA0050;
+}
+
+.pedidosya-btn:hover span {
+    color: #FA0050;
+}
+
+.didifood-btn:hover {
+    border-color: #FF7F00;
+    background: linear-gradient(135deg, #fff, #fff5e6);
+    color: #FF7F00;
+}
+
+.didifood-btn:hover span {
+    color: #FF7F00;
+}
+
+.rappi-btn:hover {
+    border-color: #FF441F;
+    background: linear-gradient(135deg, #fff, #ffe8e6);
+    color: #FF441F;
+}
+
+.rappi-btn:hover span {
+    color: #FF441F;
+}
+
 /* Estado vacío */
 .no-locations {
     text-align: center;
@@ -478,6 +676,28 @@
     .location-actions {
         grid-template-columns: 1fr 1fr;
     }
+    
+    .delivery-platforms {
+        padding: 15px;
+    }
+    
+    .platforms-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    
+    .platform-btn {
+        padding: 12px 8px;
+    }
+    
+    .platform-icon {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .platform-btn span {
+        font-size: 0.75rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -505,6 +725,33 @@
     .action-btn {
         padding: 12px 16px;
         font-size: 0.85rem;
+    }
+    
+    .delivery-platforms {
+        padding: 15px;
+    }
+    
+    .delivery-title {
+        font-size: 0.95rem;
+    }
+    
+    .platforms-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+    
+    .platform-btn {
+        padding: 10px 6px;
+    }
+    
+    .platform-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 6px;
+    }
+    
+    .platform-btn span {
+        font-size: 0.7rem;
     }
 }
 

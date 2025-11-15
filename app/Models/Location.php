@@ -18,6 +18,9 @@ class Location extends Model
         'image',
         'menu_pdf',
         'promotions_pdf',
+        'pedidosya_url',
+        'didifood_url',
+        'rappi_url',
         'order',
         'active',
         'description'

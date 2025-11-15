@@ -2209,7 +2209,7 @@ section,
                     @if($deliveryPlatforms->count() > 0)
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle delivery-dropdown" href="#" id="pedirOnlineDropdown" role="button" data-bs-toggle="dropdown">
-                            <i class="fas fa-motorcycle me-1"></i>ONLINE APLICACIONES
+                            <i class="fas fa-motorcycle me-1"></i>DELIVERY
                         </a>
                         <ul class="dropdown-menu delivery-dropdown-menu">
                             @foreach($deliveryPlatforms as $platform)
@@ -2273,6 +2273,7 @@ section,
                 <ul class="list-unstyled">
                     <li><a href="{{ url('/catering') }}">Reservar</a></li>
                     <li><a href="{{ url('/catering') }}">Nuestros clientes</a></li>
+                    <li><a href="#" data-bs-toggle="modal" data-bs-target="#complaintBookModal">📋 Libro de Reclamaciones</a></li>
                 </ul>
             </div>
             <div class="col-md-2">
@@ -2303,6 +2304,172 @@ section,
         </div>
     </div>
 </footer>
+
+    <!-- Modal de Libro de Reclamaciones -->
+    <div class="modal fade" id="complaintBookModal" tabindex="-1" aria-labelledby="complaintBookModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(135deg, #fec601, #f8d000); border-bottom: 3px solid #210303;">
+                    <h3 class="modal-title fw-bold" id="complaintBookModalLabel" style="color: #210303;">
+                        <i class="fas fa-book me-2"></i> Libro de Reclamaciones
+                    </h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="background-color: #f8f9fa;">
+                    <form id="complaintBookForm">
+                        @csrf
+                        
+                        <!-- Tipo de Solicitud -->
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-header" style="background-color: #210303; color: white;">
+                                <h5 class="mb-0"><i class="fas fa-clipboard-list me-2"></i> 1. Tipo de Solicitud</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-check form-check-inline p-3 border rounded" style="width: 100%;">
+                                            <input class="form-check-input" type="radio" name="type" id="typeReclamo" value="reclamo" required>
+                                            <label class="form-check-label fw-bold" for="typeReclamo">
+                                                <i class="fas fa-exclamation-triangle text-danger me-2"></i> RECLAMO
+                                                <small class="d-block text-muted">Disconformidad relacionada a los productos o servicios</small>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check form-check-inline p-3 border rounded" style="width: 100%;">
+                                            <input class="form-check-input" type="radio" name="type" id="typeQueja" value="queja" required>
+                                            <label class="form-check-label fw-bold" for="typeQueja">
+                                                <i class="fas fa-comment-dots text-warning me-2"></i> QUEJA
+                                                <small class="d-block text-muted">Disconformidad no relacionada a los productos o servicios</small>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Datos del Consumidor -->
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-header" style="background-color: #210303; color: white;">
+                                <h5 class="mb-0"><i class="fas fa-user me-2"></i> 2. Datos del Consumidor</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-12">
+                                        <label for="full_name" class="form-label fw-bold">Nombre Completo *</label>
+                                        <input type="text" class="form-control" id="full_name" name="full_name" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="document_type" class="form-label fw-bold">Tipo de Documento *</label>
+                                        <select class="form-select" id="document_type" name="document_type" required>
+                                            <option value="">Seleccionar...</option>
+                                            <option value="DNI">DNI</option>
+                                            <option value="CE">Carnet de Extranjería</option>
+                                            <option value="Pasaporte">Pasaporte</option>
+                                            <option value="RUC">RUC</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="document_number" class="form-label fw-bold">Número de Documento *</label>
+                                        <input type="text" class="form-control" id="document_number" name="document_number" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="phone" class="form-label fw-bold">Teléfono *</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="email" class="form-label fw-bold">Correo Electrónico *</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="department" class="form-label fw-bold">Departamento</label>
+                                        <input type="text" class="form-control" id="department" name="department" placeholder="Ej: Lima">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="province" class="form-label fw-bold">Provincia</label>
+                                        <input type="text" class="form-control" id="province" name="province" placeholder="Ej: Lima">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="district" class="form-label fw-bold">Distrito</label>
+                                        <input type="text" class="form-control" id="district" name="district" placeholder="Ej: San Juan de Lurigancho">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="address" class="form-label fw-bold">Dirección</label>
+                                        <textarea class="form-control" id="address" name="address" rows="2"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Identificación del Bien Contratado -->
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-header" style="background-color: #210303; color: white;">
+                                <h5 class="mb-0"><i class="fas fa-box me-2"></i> 3. Identificación del Bien Contratado</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold">Tipo *</label>
+                                        <div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="product_type" id="productTypeProduct" value="producto" required>
+                                                <label class="form-check-label" for="productTypeProduct">Producto</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="product_type" id="productTypeService" value="servicio" required>
+                                                <label class="form-check-label" for="productTypeService">Servicio</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="amount" class="form-label fw-bold">Monto Reclamado (S/)</label>
+                                        <input type="number" step="0.01" class="form-control" id="amount" name="amount" placeholder="0.00">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="description" class="form-label fw-bold">Descripción del Producto o Servicio *</label>
+                                        <textarea class="form-control" id="description" name="description" rows="3" required placeholder="Describa el producto o servicio relacionado con su reclamo o queja"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Detalle de la Reclamación -->
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-header" style="background-color: #210303; color: white;">
+                                <h5 class="mb-0"><i class="fas fa-file-alt me-2"></i> 4. Detalle de la Reclamación</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-12">
+                                        <label for="complaint_detail" class="form-label fw-bold">Detalle del Reclamo o Queja *</label>
+                                        <textarea class="form-control" id="complaint_detail" name="complaint_detail" rows="4" required placeholder="Describa detalladamente su reclamo o queja"></textarea>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="request" class="form-label fw-bold">Pedido del Consumidor *</label>
+                                        <textarea class="form-control" id="request" name="request" rows="3" required placeholder="Indique qué solicita como solución a su reclamo o queja"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i> 
+                            <strong>Importante:</strong> La formulación del reclamo no impide acudir a otras vías de solución de controversias ni es requisito previo para interponer una denuncia ante el INDECOPI.
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer" style="background-color: #f8f9fa;">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-2"></i> Cancelar
+                    </button>
+                    <button type="button" class="btn btn-warning fw-bold" id="submitComplaintBtn" style="background: linear-gradient(135deg, #fec601, #f8d000); border: none; color: #210303;">
+                        <i class="fas fa-paper-plane me-2"></i> Enviar Reclamo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @php $socialWidget = \App\Models\SocialWidget::getActive(); @endphp
     @if($socialWidget)
         <div class="social-widget-floating social-widget-{{ $socialWidget->position }}">
@@ -2339,6 +2506,67 @@ section,
 
     @include('components.promotional-popup')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+    // JavaScript para Libro de Reclamaciones
+    document.getElementById('submitComplaintBtn')?.addEventListener('click', function() {
+        const form = document.getElementById('complaintBookForm');
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        const btn = this;
+        const originalText = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Enviando...';
+
+        const formData = new FormData(form);
+
+        fetch('{{ route("complaint-book.store") }}', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Cerrar modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById('complaintBookModal'));
+                modal.hide();
+
+                // Resetear formulario
+                form.reset();
+
+                // Mostrar mensaje de éxito
+                const alertDiv = document.createElement('div');
+                alertDiv.className = 'alert alert-success alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3';
+                alertDiv.style.zIndex = '9999';
+                alertDiv.innerHTML = `
+                    <strong><i class="fas fa-check-circle me-2"></i> ¡Éxito!</strong> 
+                    Su reclamo ha sido registrado con el número: <strong>${data.complaint_number}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                `;
+                document.body.appendChild(alertDiv);
+
+                setTimeout(() => alertDiv.remove(), 8000);
+            } else {
+                throw new Error(data.message || 'Error al enviar el reclamo');
+            }
+        })
+        .catch(error => {
+            alert('Error al enviar el reclamo: ' + error.message);
+        })
+        .finally(() => {
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+        });
+    });
+    </script>
+    
     @yield('scripts')
 </body>
 </html>
