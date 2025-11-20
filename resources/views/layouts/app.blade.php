@@ -2197,7 +2197,7 @@ section,
                         <a class="nav-link" href="{{ route('locations') }}">NUESTRA CARTA</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('locations') }}">PROMOCIONES</a>
+                        <a class="nav-link" href="{{ route('promotional-locations.public') }}">PROMOCIONES</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('catering') }}">CORPORATIVOS</a>
@@ -2212,6 +2212,13 @@ section,
                             <i class="fas fa-motorcycle me-1"></i>DELIVERY
                         </a>
                         <ul class="dropdown-menu delivery-dropdown-menu">
+                            <li>
+                                <a class="dropdown-item delivery-platform-link" href="{{ route('delivery-locations.public') }}">
+                                    <i class="fas fa-truck me-2"></i>
+                                    Nuestros Deliveries
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
                             @foreach($deliveryPlatforms as $platform)
                             <li>
                                 <a class="dropdown-item delivery-platform-link" href="{{ $platform->link }}" target="_blank">

@@ -349,6 +349,16 @@
                 <i class="fas fa-motorcycle"></i>
                 Pedir Online
             </a>
+            <a href="{{ route('admin.promotional-locations.index') }}" 
+                class="nav-link {{ request()->routeIs('admin.promotional-locations.*') ? 'active' : '' }}">
+                <i class="fas fa-gift"></i>
+                Nuestras Promociones
+            </a>
+            <a href="{{ route('admin.delivery-locations.index') }}" 
+                class="nav-link {{ request()->routeIs('admin.delivery-locations.*') ? 'active' : '' }}">
+                <i class="fas fa-truck"></i>
+                Nuestros Deliveries
+            </a>
             <a href="{{ route('admin.complaint-books.index') }}" 
                 class="nav-link {{ request()->routeIs('admin.complaint-books.*') ? 'active' : '' }}">
                 <i class="fas fa-book"></i>

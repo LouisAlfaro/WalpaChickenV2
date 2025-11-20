@@ -23,6 +23,10 @@ use App\Http\Controllers\Admin\PromotionalPopupController;
 use App\Http\Controllers\Admin\DeliveryPlatformController;
 use App\Http\Controllers\ComplaintBookController;
 use App\Http\Controllers\Admin\ComplaintBookController as AdminComplaintBookController;
+use App\Http\Controllers\Admin\PromotionalLocationController;
+use App\Http\Controllers\Admin\DeliveryLocationController;
+use App\Http\Controllers\PromotionalLocationsController;
+use App\Http\Controllers\DeliveryLocationsController;
 
 
 
@@ -32,6 +36,8 @@ Route::get('/', [WelcomeController::class, 'index'])->name('home');
 Route::get('/locales', [LocationsPageController::class, 'index'])->name('locations');
 Route::get('/carta', [MenuController::class, 'index'])->name('menu');
 Route::get('/promociones', [PromotionsController::class, 'index'])->name('promotions');
+Route::get('/nuestras-promociones', [PromotionalLocationsController::class, 'index'])->name('promotional-locations.public');
+Route::get('/nuestros-deliveries', [DeliveryLocationsController::class, 'index'])->name('delivery-locations.public');
 Route::get('/empresa', [CompanyController::class, 'index'])->name('company');
 Route::get('/catering', [CateringController::class, 'index'])->name('catering');
 Route::post('/catering/request', [CateringController::class, 'storeCateringRequest'])->name('catering.request');
@@ -147,4 +153,12 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     // Libro de Reclamaciones
     Route::resource('complaint-books', AdminComplaintBookController::class)->except(['create', 'store']);
     Route::get('complaint-books/export', [AdminComplaintBookController::class, 'export'])->name('complaint-books.export');
+    
+    // Nuestras Promociones
+    Route::resource('promotional-locations', PromotionalLocationController::class);
+    Route::patch('promotional-locations/{promotional_location}/toggle', [PromotionalLocationController::class, 'toggle'])->name('promotional-locations.toggle');
+    
+    // Nuestros Deliveries
+    Route::resource('delivery-locations', DeliveryLocationController::class);
+    Route::patch('delivery-locations/{delivery_location}/toggle', [DeliveryLocationController::class, 'toggle'])->name('delivery-locations.toggle');
 });
